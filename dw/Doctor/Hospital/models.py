@@ -101,6 +101,7 @@ class Comment(models.Model):
     Date = models.DateField()
     Time = models.TimeField()
     def __str__(self):
-        return self.Author
+        return self.Text
     def createComment(com,author,blog,text,date,time):
         comment = com(Author=author,Blog=blog,Text=text,Date = date,Time=time)
+        return comment

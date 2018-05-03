@@ -243,6 +243,39 @@ def changeinfo(request):
 def showchangeinfo(request):
     return render(request,'Hospital/showchangeinfo.html')
 
+def postblog(request):
+    return render(request,'Hospital/postblog.html')
+
+def showblog(request):
+    blogs = Blog.objects.all()
+    return render(request,'Hospital/Blog.html',{"blogs":blogs})
+
+def showpostblog(request):
+    author = Patients.objects.get(Phonenumber=request.session.get('k1',0))
+    title = request.POST.get("title")
+    text = request.POST.get("text")
+    blo = Blog
+    blog = blo.createBlog(blo,author,title,text,'2018-5-3','23:36')
+    blog.save()
+    return render(request,'Hospital/postsuccess.html')
+
+def comment(request,num):
+    comments = Comment.objects.filter(Blog=num)
+    return render(request,'Hospital/comment.html',{"comments":comments})
+
+def postcomment(request,num):
+    return render(request,'Hospital/postcomment.html')
+
+def showpostcomment(request,num):
+    author = Patients.objects.get(Phonenumber=request.session.get('k1', 0))
+    blog = Blog.objects.get(pk=num)
+    text = request.POST.get("text")
+    print(text)
+    com1  = Comment
+    comment1 = com1.createComment(com1,author,blog,text,'2018-5-3','23:36')
+    comment1.save()
+    return render(request,'Hospital/postsuccess.html')
+
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont
     import random
@@ -282,6 +315,7 @@ def verifycode(request):
     buf = io.BytesIO()
     im.save(buf,'png')
     return HttpResponse(buf.getvalue(),'image/png')
+
 
 class changemanager():
     pass

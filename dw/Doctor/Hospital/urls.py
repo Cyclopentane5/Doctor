@@ -32,4 +32,10 @@ urlpatterns = [
     url('^showchangeinfo/$',views.showchangeinfo),
     url('^changeinfo/$',views.changeinfo),
     url('^verifycode/$',views.verifycode),
+    url('^postblog/$',views.postblog),
+    url('^showblog/$',views.showblog),
+    url('^showpostblog/$',views.showpostblog),
+    url('^showblog/(\d+)/$',views.comment),
+    url('^showblog/(\d+)/postcomment/$',views.postcomment),
+    url('^showblog/(\d+)/postcomment/success/$',views.showpostcomment),
 ]

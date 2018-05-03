@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="/postblog/">make you own blog</a>
+    <ul>
+        {%for blog in blogs%}
+        <li>
+            {{blog}}--{{blog.Text}}
+            <a href="{{blog.pk}}">view comments</a>
+        </li>
+        {%empty%}
+            <h3>No blog yet</h3>
+        {%endfor%}
+    </ul>
+</body>
+</html>
