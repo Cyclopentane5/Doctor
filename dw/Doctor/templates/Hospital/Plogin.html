@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+</head>
+<body>
+    <form action = "/psuccess/" method="post">
+        {% csrf_token %}
+         Phonenumber <input type = "text" name = "phonenumber"/>
+        <hr/>
+        Password <input type = "text" name = "password"/>
+        <hr/>
+        Text <input type = "text" name = "verify"/>
+        <img src="/verifycode/">
+        <hr/>
+        <input type ="submit" name = "login"/>
+
+        <hr/>
+    </form>
+</body>
+</html>

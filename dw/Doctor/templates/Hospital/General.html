@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>General</title>
+</head>
+<body>
+    <h3>welcome{{name}}</h3>
+    <ul>
+        <li>
+            <a href="/districts">search by location</a>
+        </li>
+        <li>
+            <a href="/FrontPage">search by department</a>
+        </li>
+        <li>
+            <form action = "/SearchName/" method="post">
+                {% csrf_token %}
+                SearchName:<input type = "text" name = "name"/>
+                <input type ="submit" name = "signup"/>
+            </form>
+        </li>
+        <li>
+            <a href="/showplogin">patient log in</a>
+        </li>
+        <li>
+            <a href="/showsignup">patient register</a>
+        </li>
+         <li>
+            <a href="/showdlogin">doctor log in</a>
+        </li>
+    </ul>
+</body>
+</html>

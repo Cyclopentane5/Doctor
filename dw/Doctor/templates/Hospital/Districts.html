@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Searchhospitals</title>
+</head>
+<body>
+    <ul>
+        {%for district in districts%}
+        <li>
+            <a href="{{district.pk}}">{{district}}</a>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action = "/signup/" method="post">
+        {% csrf_token %}
+        NewName:<input type = "text" name = "name"/>
+        <hr/>
+        NewAge:<input type = "text" name = "age"/>
+        <hr/>
+        NewGender <input type = "text" name = "gender"/>
+        <hr/>
+        NewPhonenumber <input type = "text" name = "phonenumber"/>
+        <hr/>
+        Password1 <input type = "text" name = "password1"/>
+        <hr/>
+        Password2 <input type = "text" name = "password2"/>
+        <hr/>
+        <input type ="submit" name = "change"/>
+    </form>
+</body>
+</html>

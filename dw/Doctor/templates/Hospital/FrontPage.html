@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegisterPlatform</title>
+</head>
+<body>
+    <h3>Hello</h3>
+    <ul>
+    {%for department in departments%}
+    <li>
+        <a href="{{department.pk}}">{{department}}-----{{department.Info}}</a>
+    </li>
+    {%endfor%}
+    </ul>
+
+</body>
+</html>

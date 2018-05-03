@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h3>Hello</h3>
+    <ul>
+        {%for info in infos%}
+        <li>
+            {{info.Department|default:'No available register yet'}}--{{info.Hospital}}--{{info.Restnumber}}--{{info.Time}}
+            <a href="/pregister/">register</a>
+        </li>
+        {% empty %}
+            <h3>No available register yet</h3>
+        {%endfor%}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h3>Register Info</h3>
+    <ul>
+        {%for register in registers%}
+        <li>
+            <a href="{{register.id}}">{{register.Patients}}</a>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record</title>
+</head>
+<body>
+    <h3>Record Info</h3>
+    <ul>
+        {%for record in records%}
+        <li>
+            <a href="{{record.id}}">{{record.Register}}</a>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

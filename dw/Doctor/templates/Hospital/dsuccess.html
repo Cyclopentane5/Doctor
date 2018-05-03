@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <a href="/generals/">return to first page</a>
+    <a href="/manage/">go to manage page</a>
+    <ul>
+         {%for departmentinfo in departmentinfos%}
+            <li>
+                {{departmentinfo|default='No register yet'}}--{{departmentinfo.Time}}
+                <a href="{{departmentinfo.pk}}">add number</a>
+            </li>
+         {% empty %}
+            <h3>No register yet</h3>
+         {%endfor%}
+    </ul>
+    <a href="/logout/">logout</a>
+</body>
+</html>

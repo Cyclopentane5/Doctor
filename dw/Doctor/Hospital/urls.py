@@ -1,0 +1,35 @@
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url('^$',views.index),
+    url('^(\d+)/$',views.detail),
+    url('^generals/$',views.General),
+    url('^FrontPage/$', views.DepartmenttoHospital),
+    url('^FrontPage/(\d+)/$', views.HospitalList),
+    url('^FrontPage/(\d+)/(\d+)/$', views.RegisterInfo),
+    url('^districts/$',views.Districtlist),
+    url('^districts/(\d+)/$',views.DistricttoHospital),
+    url('^districts/(\d+)/(\d+)/$',views.HospitaltoDepartment),
+    url('^districts/(\d+)/(\d+)/(\d+)/$',views.departmentregister),
+    url('^showsignup/$',views.showsignup),
+    url('^signup/$',views.signup),
+    url('^showplogin/$',views.showplogin),
+    url('^showdlogin/$',views.showdlogin),
+    url('^psuccess/$',views.plogin),
+    url('^dsuccess/$',views.dlogin),
+    url('^dsuccess/(\d+)/$', views.addnumber),
+    url('^dsuccess/(\d+)/addsuccess/$', views.addsuccess),
+    url('^pregister/$',views.pregister),
+    url('^showregister/$',views.showregister),
+    url('^showregister/(\d+)/$',views.cancelregister),
+    url('^logout/$',views.logout),
+    url('^manage/$',views.manage),
+    url('^manage/(\d+)/$',views.addrecord),
+    url('^manage/(\d+)/success/$',views.saddrecord),
+    url('^SearchName/$',views.searchname),
+    url('^showchangeinfo/$',views.showchangeinfo),
+    url('^changeinfo/$',views.changeinfo),
+    url('^verifycode/$',views.verifycode),
+]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {%for register in registers%}
+        <li>
+            {{register}}
+        </li>
+        {%endfor%}
+    </ul>
+
+    <form action = "success/" method="post">
+        {% csrf_token %}
+        Np:<input type = "text" name = "np"/>
+        <hr/>
+        Name:<input type = "text" name = "name"/>
+        <hr/>
+        Info: <input type = "text" name = "info"/>
+        <hr/>
+        <input type ="submit" name = "add"/>
+    </form>
+</body>
+</html>

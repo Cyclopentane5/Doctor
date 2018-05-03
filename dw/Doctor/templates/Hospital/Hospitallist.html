@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+</head>
+<body>
+<ul>
+    {%for hospital in hospitals%}
+    <li>
+        <a href="{{hospital.Hospital.pk}}"> {{hospital.Hospital}}----{{hospital.Hospital.Location}}</a>
+    </li>
+    {%endfor%}
+</ul>
+
+</body>
+</html>

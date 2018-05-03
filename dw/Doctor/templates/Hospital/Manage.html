@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>registerlist</title>
+</head>
+<body>
+<ul>
+    {%for register in registers%}
+    <li>
+        {{register|default='No register yet'}}--{{register.Time}}
+        <a href="{{register.pk}}"> addrecord</a>
+    </li>
+    {% empty %}
+        <h3>No register yet</h3>
+    {%endfor%}
+
+</ul>
+</body>
+</html>

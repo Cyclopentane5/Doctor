@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patients</title>
+</head>
+<body>
+    <h3>Patients Info</h3>
+    <ul>
+        {%for patient in patients%}
+        <li>
+            <a href="{{patient.id}}">{{patient.Name}}</a>
+
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

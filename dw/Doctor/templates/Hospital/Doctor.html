@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor</title>
+</head>
+<body>
+    <h3>Doctor Info</h3>
+    <ul>
+        {%for doctor in doctors%}
+        <li>
+            <a href="{{doctor.id}}">{{doctor.Name}}</a>
+        </li>
+        {%endfor%}
+    </ul>
+
+
+</body>
+</html>
