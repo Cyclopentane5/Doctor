@@ -31,8 +31,6 @@ def HospitalList(request,Department):
     return render(request,'Hospital/Hospitallist.html',{"hospitals":Hospitallist})
 
 def RegisterInfo(request,Department,Hospital):
-    print(Department)
-    print(Hospital)
     DepartmentInfoD = DepartmentInfo.objects.filter(Department__pk=Department).filter(Hospital__pk=Hospital)
     a = DepartmentInfoD.values_list('pk',flat=True)
     x=0
@@ -55,8 +53,6 @@ def HospitaltoDepartment(request,District,Hospital):
     return render(request,'Hospital/DepartmentHospital.html',{"departments":DepartmentList1})
 
 def departmentregister(request,District,Hospital,Department):
-    print(Hospital)
-    print(Department)
     DepartmentInfoD = DepartmentInfo.objects.filter(Department__pk=Department).filter(Hospital__pk=Hospital)
     a = DepartmentInfoD.values_list('pk',flat=True)
     x=0
@@ -165,13 +161,9 @@ def showregister(request):
 def cancelregister(request,num):
     register = Register.objects.get(pk=num)
     Hospital=register.Hospital
-    print(Hospital)
     Department=register.Department
-    print(Department)
     Time=register.Time
-    print(Time)
     registerdetail = DepartmentInfo.objects.filter(Hospital=Hospital).filter(Department=Department).filter(Time=Time)
-    print(registerdetail)
     for a in registerdetail:
         a.Restnumber = a.Restnumber+1
         a.save()
@@ -197,10 +189,8 @@ def addrecord(request,num):
 
 def saddrecord(request,num):
     register = Register.objects.get(pk=num)
-    print(register)
     doctor = Doctor.objects.get(Phonenumber=request.session.get('k3',None))
     patient = register.Patients
-    print(patient)
     np = request.POST.get("np")
     name = request.POST.get("name")
     info = request.POST.get("info")
@@ -302,7 +292,6 @@ def showpostcomment(request,num):
     author = Patients.objects.get(Phonenumber=request.session.get('k1', 0))
     blog = Blog.objects.get(pk=num)
     text = request.POST.get("text")
-    print(text)
     com1  = Comment
     comment1 = com1.createComment(com1,author,blog,text,'2018-5-3','23:36')
     comment1.save()
