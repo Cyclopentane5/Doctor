@@ -5,20 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <a href="/postblog/">make you own blog</a>
-    <a href="/ownblog/">own blog</a>
-    <a href="/owncomments/">own comments</a>
-    <h3>search blog</h3>
-    <form action="/searchblog/" method="post">
-        {%csrf_token%}
-        Text:<input type = "text" name = "text"/>
-        <hr/>
-        <input type ="submit" name = "search"/>
-    </form>
     <ul>
         {%for blog in blogs%}
         <li>
-            {{blog}}--{{blog.Text}}
+            {{blog}}
             <a href="{{blog.pk}}">view comments</a>
         </li>
         {%endfor%}
@@ -26,7 +16,7 @@
     <ul>
         {%for title in titles%}
         <li>
-            {{title}}--{{title.Text}}
+            {{title}}
             <a href="{{title.pk}}">view comments</a>
         </li>
         {%endfor%}
@@ -34,7 +24,7 @@
     <ul>
         {%for comment in comments%}
         <li>
-            {{comment.Blog}}--{{comment.Blog.Text}}
+            {{comment.Blog}}
             <a href="{{comment.Blog.pk}}">view comments</a>
         </li>
         {%endfor%}

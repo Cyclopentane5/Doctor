@@ -122,4 +122,6 @@ STATIC_URL = '/static/'
 
 CRONJOBS = [
     ('*/1 * * * *', 'Hospital.cron.clock'),
+    ('*/15 * * * *', 'Hospital.cron.delete'),
 ]
+

@@ -38,4 +38,13 @@ urlpatterns = [
     url('^showblog/(\d+)/$',views.comment),
     url('^showblog/(\d+)/postcomment/$',views.postcomment),
     url('^showblog/(\d+)/postcomment/success/$',views.showpostcomment),
+    url('^searchblog/$',views.searchblog),
+    url('^searchblog/(\d+)/$',views.comment),
+    url('^searchblog/(\d+)/postcomment/$',views.postcomment),
+    url('^searchblog/(\d+)/postcomment/success/$',views.showpostcomment),
+    url('^ownblog/$',views.ownblog),
+    url('^ownblog/(\d+)/view/$' ,views.comment),
+    url('^ownblog/(\d+)/delete/$' ,views.deleteblog),
+    url('^owncomments/$',views.owncomment),
+    url('^owncomments/(\d+)/$',views.deletecomment),
 ]

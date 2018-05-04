@@ -107,7 +107,7 @@ def plogin(request):
             a = patient
         if a==password and verify==request.session.get('verifycode',0):
             request.session['k1']=phonenumber
-            request.session.set_expiry(300)
+            request.session.set_expiry(900)
             return render(request,'Hospital/psuccess.html')
         else:
             return render(request,'Hospital/false2.html')
@@ -262,6 +262,38 @@ def showpostblog(request):
 def comment(request,num):
     comments = Comment.objects.filter(Blog=num)
     return render(request,'Hospital/comment.html',{"comments":comments})
+
+def deleteblog(request,num):
+    comments = Comment.objects.filter(Blog=num)
+    blog = Blog.objects.get(pk=num)
+    for comment in comments:
+        comment.delete()
+    blog.delete()
+    return render(request,'Hospital/deletesuccess.html')
+
+def owncomment(request):
+    comments = Comment.objects.filter(Author__Phonenumber = request.session.get('k1',0))
+    return render(request,'Hospital/owncomments.html',{"comments":comments})
+
+def deletecomment(request,num):
+    comments = Comment.objects.get(pk=num)
+    comments.delete()
+    return render(request,'Hospital/deletesuccess.html')
+
+def searchblog(request):
+    text = request.POST.get("text")
+    blogs = Blog.objects.filter(Text__icontains=text)
+    titles = Blog.objects.filter(Title__icontains=text)
+    comments = Comment.objects.filter(Text__icontains=text)
+    value=""
+    if len(comments)==0 and len(blogs)==0 and len(titles)==0:
+        value="No result"
+    return render(request,'Hospital/Blog.html',{"blogs":blogs,"titles":titles,"comments":comments,"value":value})
+
+def ownblog(request):
+    patient = Patients.objects.get(Phonenumber=request.session.get('k1',0))
+    blogs = Blog.objects.filter(Author = patient)
+    return render(request,'Hospital/ownblog.html',{"blogs":blogs})
 
 def postcomment(request,num):
     return render(request,'Hospital/postcomment.html')

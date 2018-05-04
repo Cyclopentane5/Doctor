@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {%for comment in comments%}
+        <li>
+            {{comment.Blog}}--{{comment.Text}}
+            <a href="{{comment.pk}}">delete comment</a>
+        </li>
+        {%empty%}
+            <h3>no comments yet</h3>
+        {%endfor%}
+    </ul>
+</body>
+</html>
