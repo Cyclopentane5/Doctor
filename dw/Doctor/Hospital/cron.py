@@ -4,13 +4,18 @@ from pandas import *
 from numpy import *
 
 def createDataSet():
-    postingList= [['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],
-               ['maybe', 'not', 'take', 'him', 'to', 'dog', 'park', 'stupid'],
-               ['my', 'dalmation', 'is', 'so', 'cute', 'I', 'love', 'him'],
-               ['stop', 'posting', 'stupid', 'worthless', 'garbage'],
-               ['mr', 'licks', 'ate', 'my', 'steak', 'how', 'to', 'stop', 'him'],
-               ['quit', 'buying', 'worthless', 'dog', 'food', 'stupid']]
-    classVec = [0, 1, 0, 1, 0, 1]
+    postingList = [['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],  # 切分的词条
+                   ['maybe', 'not', 'take', 'him', 'to', 'dog', 'park', 'stupid'],
+                   ['my', 'dalmation', 'is', 'so', 'cute', 'I', 'love', 'him'],
+                   ['stop', 'posting', 'stupid', 'worthless', 'garbage'],
+                   ['mr', 'licks', 'ate', 'my', 'steak', 'how', 'to', 'stop', 'him'],
+                   ['quit', 'buying', 'worthless', 'dog', 'food', 'stupid'],
+                   ['you', 'are', 'shit', 'ass'],
+                   ['shit', 'idiot'],
+                   ['ass', 'hole', 'bull'],
+                   ['you', 'look', 'pretty', 'nice']]
+
+    classVec = [0, 1, 0, 1, 0, 1, 1, 1, 1, 0]
     return postingList,classVec
 
 def createVocaList(postingList):
