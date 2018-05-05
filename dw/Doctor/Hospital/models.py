@@ -86,22 +86,42 @@ class Blog(models.Model):
     Author = models.ForeignKey("Patients",on_delete=models.CASCADE)
     Title = models.CharField(max_length=100)
     Text = models.CharField(max_length=3000)
-    Date = models.DateField()
-    Time = models.TimeField()
+    Time = models.DateTimeField()
     def __str__(self):
         return self.Title
-    def createBlog(blo,author,title,text,date,time):
-        blog = blo(Author=author,Title=title,Text=text,Date = date,Time=time)
+    def createBlog(blo,author,title,text,time):
+        blog = blo(Author=author,Title=title,Text=text,Time=time)
         return blog
 
 class Comment(models.Model):
     Author = models.ForeignKey("Patients",on_delete=models.CASCADE)
     Blog = models.ForeignKey("Blog",on_delete=models.CASCADE)
     Text = models.CharField(max_length=1000)
-    Date = models.DateField()
-    Time = models.TimeField()
+    Time = models.DateTimeField()
     def __str__(self):
         return self.Text
-    def createComment(com,author,blog,text,date,time):
-        comment = com(Author=author,Blog=blog,Text=text,Date = date,Time=time)
+    def createComment(com,author,blog,text,time):
+        comment = com(Author=author,Blog=blog,Text=text,Time=time)
         return comment
+
+class Expert(models.Model):
+    Name = models.CharField(max_length=30)
+    Info = models.CharField(max_length=500)
+    Password = models.IntegerField(default=0)
+    def __str___(self):
+        return self.Name
+
+class Patientmesage(models.Model):
+    Expert = models.ForeignKey("Expert",on_delete=models.CASCADE)
+    Text = models.CharField(max_length=1000)
+    Time = models.DateTimeField()
+
+    pass
+
+
+class Expertmessage(models.Model):
+    Patients = models.ForeignKey("Patients",on_delete=models.CASCADE)
+    Text = models.CharField(max_length=1000)
+    Time = models.DateTimeField()
+
+    pass

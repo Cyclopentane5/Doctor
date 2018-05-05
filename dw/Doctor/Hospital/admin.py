@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Hospital,Doctor,Department,Patients,Register,Record,District,DepartmentInfo,DepartmentList,Blog,Comment
+from .models import Hospital,Doctor,Department,Patients,Register,Record,District,DepartmentInfo,DepartmentList,Blog,Comment,Expert,Patientmesage,Expertmessage
 class showDoctor(admin.ModelAdmin):
     list_display = ['pk','Hospital','Name','Department','Doctorid','Phonenumber']
     list_filter = ['Name']
@@ -48,14 +48,30 @@ class showRecord(admin.ModelAdmin):
     search_fields = ['Register']
 
 class showBlog(admin.ModelAdmin):
-    list_display = ['pk', 'Author', 'Title', 'Text', 'Date', 'Time']
+    list_display = ['pk', 'Author', 'Title', 'Text', 'Time']
     list_filter = ['Title']
     search_fields = ['Title']
 
 class showComment(admin.ModelAdmin):
-    list_display = ['pk', 'Author', 'Blog', 'Text', 'Date', 'Time']
+    list_display = ['pk', 'Author', 'Blog', 'Text', 'Time']
     list_filter = ['Author']
     search_fields = ['Author']
+
+class showExpert(admin.ModelAdmin):
+    list_display = ['Name','Info']
+    list_filter = ['Name']
+    search_fields = ['Name']
+
+class showexpertmessage(admin.ModelAdmin):
+    list_display = ['Patients', 'Text', 'Time']
+    list_filter = ['Text']
+    search_fields = ['Text']
+
+
+class showpatientmessage(admin.ModelAdmin):
+    list_display = ['Expert', 'Text', 'Time']
+    list_filter = ['Text']
+    search_fields = ['Text']
 
 
 admin.site.register(District,showDistrict)
@@ -69,3 +85,6 @@ admin.site.register(Register,showRegister)
 admin.site.register(Record,showRecord)
 admin.site.register(Blog,showBlog)
 admin.site.register(Comment,showComment)
+admin.site.register(Expert,showExpert)
+admin.site.register(Expertmessage,showexpertmessage)
+admin.site.register(Patientmesage,showpatientmessage)

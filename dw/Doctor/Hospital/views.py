@@ -245,7 +245,7 @@ def showpostblog(request):
     title = request.POST.get("title")
     text = request.POST.get("text")
     blo = Blog
-    blog = blo.createBlog(blo,author,title,text,'2018-5-3','23:36')
+    blog = blo.createBlog(blo,author,title,text,'2018-5-3 23:36')
     blog.save()
     return render(request,'Hospital/postsuccess.html')
 
@@ -293,7 +293,7 @@ def showpostcomment(request,num):
     blog = Blog.objects.get(pk=num)
     text = request.POST.get("text")
     com1  = Comment
-    comment1 = com1.createComment(com1,author,blog,text,'2018-5-3','23:36')
+    comment1 = com1.createComment(com1,author,blog,text,'2018-5-3 23:36')
     comment1.save()
     return render(request,'Hospital/postsuccess.html')
 
