@@ -8,7 +8,7 @@
 <ul>
     {%for register in registers%}
     <li>
-        {{register|default='No register yet'}}--{{register.Time}}
+        {{register}}--{{register.Time}}
         <a href="{{register.pk}}"> addrecord</a>
     </li>
     {% empty %}

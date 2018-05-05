@@ -9,7 +9,7 @@
     <ul>
         {%for info in infos%}
         <li>
-            {{info.Department|default:'No available register yet'}}--{{info.Hospital}}--{{info.Restnumber}}--{{info.Time}}
+            {{info.Department}}--{{info.Hospital}}--{{info.Restnumber}}--{{info.Time}}
             <a href="/pregister/">register</a>
         </li>
         {% empty %}
