@@ -339,4 +339,5 @@ def verifycode(request):
 
 
 class changemanager():
+
     pass

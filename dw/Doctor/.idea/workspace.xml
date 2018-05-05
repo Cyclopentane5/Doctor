@@ -10,7 +10,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Hospital/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="874">
+              <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Hospital/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6422">
+              <caret line="341" selection-start-line="341" selection-end-line="341" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Doctor/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,8 +127,6 @@
         <option value="$PROJECT_DIR$/templates/Hospital/owncomments.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/ownblog.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/Blog.html" />
-        <option value="$PROJECT_DIR$/Doctor/settings.py" />
-        <option value="$PROJECT_DIR$/Hospital/views.py" />
         <option value="$PROJECT_DIR$/Hospital/admin.py" />
         <option value="$PROJECT_DIR$/templates/Hospital/dsuccess.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/Manage.html" />
@@ -108,10 +134,12 @@
         <option value="$PROJECT_DIR$/templates/Hospital/showregister.html" />
         <option value="$PROJECT_DIR$/Hospital/cron.py" />
         <option value="$PROJECT_DIR$/Hospital/models.py" />
+        <option value="$PROJECT_DIR$/Hospital/views.py" />
+        <option value="$PROJECT_DIR$/Doctor/settings.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="35" />
     <option name="y" value="70" />
     <option name="width" value="1750" />
@@ -122,7 +150,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,20 +165,35 @@
             <path>
               <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="Hospital" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="Hospital" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cindy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\PycharmProjects\Doctor\static\Hospital\js" />
       <recent name="C:\Users\Lenovo\PycharmProjects\Doctor\Hospital" />
     </key>
   </component>
@@ -168,7 +210,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="cron" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Doctor" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -188,7 +230,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.cron" />
+        <item itemvalue="Python." />
       </list>
     </recent_temporary>
   </component>
@@ -206,9 +248,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="56" width="1400" height="776" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27705628" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32968536" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
@@ -236,13 +278,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Hospital/cron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Hospital/Hospitaldetail.html" />
     <entry file="file://$PROJECT_DIR$/templates/Hospital/Department.html" />
     <entry file="file://$PROJECT_DIR$/Doctor/urls.py">
@@ -283,31 +318,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Doctor/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="124" column="45" lean-forward="true" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Hospital/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1691">
           <caret line="89" column="52" selection-start-line="89" selection-start-column="52" selection-end-line="89" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hospital/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1767">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hospital/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -549,6 +563,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Hospital/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2299">
+          <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Hospital/cron.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -556,10 +577,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hospital/models.py">
+    <entry file="file://$PROJECT_DIR$/Hospital/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2299">
-          <caret line="121" column="29" selection-start-line="121" selection-start-column="29" selection-end-line="121" selection-end-column="29" />
+        <state relative-caret-position="874">
+          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hospital/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6422">
+          <caret line="341" selection-start-line="341" selection-end-line="341" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/Hospital/js/jquery-3.3.1.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Doctor/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="122" column="35" selection-start-line="122" selection-start-column="35" selection-end-line="122" selection-end-column="35" />
         </state>
       </provider>
     </entry>
