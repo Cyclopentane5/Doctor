@@ -58,18 +58,18 @@ class showComment(admin.ModelAdmin):
     search_fields = ['Author']
 
 class showExpert(admin.ModelAdmin):
-    list_display = ['Name','Info']
+    list_display = ['Name','Phonenumber','Info']
     list_filter = ['Name']
     search_fields = ['Name']
 
 class showexpertmessage(admin.ModelAdmin):
-    list_display = ['Patients', 'Text', 'Time']
+    list_display = ['Patients','Expert', 'Text', 'Time']
     list_filter = ['Text']
     search_fields = ['Text']
 
 
 class showpatientmessage(admin.ModelAdmin):
-    list_display = ['Expert', 'Text', 'Time']
+    list_display = ['Expert','Patients', 'Text', 'Time']
     list_filter = ['Text']
     search_fields = ['Text']
 

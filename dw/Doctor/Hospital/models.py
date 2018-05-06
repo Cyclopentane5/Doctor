@@ -106,13 +106,15 @@ class Comment(models.Model):
 
 class Expert(models.Model):
     Name = models.CharField(max_length=30)
+    Phonenumber = models.IntegerField(default=0)
     Info = models.CharField(max_length=500)
     Password = models.IntegerField(default=0)
-    def __str___(self):
+    def __str__(self):
         return self.Name
 
 class Patientmesage(models.Model):
     Expert = models.ForeignKey("Expert",on_delete=models.CASCADE)
+    Patients = models.ForeignKey("Patients",on_delete=models.CASCADE)
     Text = models.CharField(max_length=1000)
     Time = models.DateTimeField()
     def __str__(self):
@@ -124,6 +126,7 @@ class Patientmesage(models.Model):
 
 class Expertmessage(models.Model):
     Patients = models.ForeignKey("Patients",on_delete=models.CASCADE)
+    Expert = models.ForeignKey("Expert", on_delete=models.CASCADE)
     Text = models.CharField(max_length=1000)
     Time = models.DateTimeField()
     def __str__(self):

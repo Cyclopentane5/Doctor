@@ -47,4 +47,9 @@ urlpatterns = [
     url('^ownblog/(\d+)/delete/$' ,views.deleteblog),
     url('^owncomments/$',views.owncomment),
     url('^owncomments/(\d+)/$',views.deletecomment),
+    url('^consultexpert/$',views.consultexpert),
+    url('^expertlogin/$',views.expertlogin),
+    url('^esuccess/$',views.esuccess),
+    url('^emessage/$',views.emessage)
+
 ]

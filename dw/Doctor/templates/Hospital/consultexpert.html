@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {%for expert in experts%}
+        <li>
+            {{expert.Name}}--{{expert.Info}}
+            <a href="{{expert.id}}">consult</a>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

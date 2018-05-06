@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {%for message in messages%}
+        <li>
+            {{message.Patients__Name}}
+            <a href="{{message.Patients}}">view message</a>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+</html>

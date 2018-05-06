@@ -9,7 +9,7 @@ def index(request):
 def detail(request,num):
     return HttpResponse("detail -%s"%(num))
 
-from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment
+from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Expertmessage,Patientmesage
 
 
 def General(request):
@@ -174,6 +174,7 @@ def logout(request):
     request.session['k1']=0
     request.session['k2']=0
     request.session['k3']=0
+    request.session['k4']=0
     return render(request,'Hospital/logout.html')
 
 def manage(request):
@@ -296,6 +297,40 @@ def showpostcomment(request,num):
     comment1 = com1.createComment(com1,author,blog,text,'2018-5-3 23:36')
     comment1.save()
     return render(request,'Hospital/postsuccess.html')
+
+def consultexpert(request):
+    experts = Expert.objects.all()
+    return render(request,'Hospital/consultexpert.html',{"experts":experts})
+
+def expertlogin(request):
+    if request.session.get('k4',0)==0:
+        return render(request,'Hospital/expertlogin.html')
+    else:
+        return HttpResponseRedirect('/esuccess/')
+
+def esuccess(request):
+    if request.session.get('k4',0)==0:
+        phonenumber = request.POST.get("phonenumber")
+
+        password = request.POST.get("password")
+        password=int(password)
+        verify = request.POST.get("verify")
+        experts  = Expert.objects.values_list('Password',flat = True).filter(Phonenumber = phonenumber)
+        a=0
+        for expert in experts:
+            a=expert
+        if a==password and verify==request.session.get('verifycode',0):
+            request.session['k4']=phonenumber
+            request.session.set_expiry(900)
+            return render(request,'Hospital/esuccess.html')
+        else:
+            return render(request,'Hospital/false3.html')
+    else:
+        return render(request,'Hospital/esuccess.html')
+
+def emessage(request):
+    messages = Expertmessage.objects.filter(Expert__Phonenumber=request.session.get('k4',0)).values("Patients__Name","Patients").distinct()
+    return render(request,'Hospital/emessage.html',{"messages":messages})
 
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont
