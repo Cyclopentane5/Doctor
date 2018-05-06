@@ -10,7 +10,7 @@ def detail(request,num):
     return HttpResponse("detail -%s"%(num))
 
 from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Expertmessage,Patientmesage
-
+from django.http import JsonResponse
 
 def General(request):
     info = request.session.get('k1',0)
@@ -331,6 +331,32 @@ def esuccess(request):
 def emessage(request):
     messages = Expertmessage.objects.filter(Expert__Phonenumber=request.session.get('k4',0)).values("Patients__Name","Patients").distinct()
     return render(request,'Hospital/emessage.html',{"messages":messages})
+
+def chatboxpatient(request,num):
+    return render(request,'Hospital/chatboxpatient.html')
+
+def chatboxexpert(request,num):
+    return render(request,'Hospital/chatboxexpert.html')
+
+def chatpatient(request,num):
+    expert = Expert.objects.get(pk=num)
+    patient = Patients.objects.get(Phonenumber = request.session.get('k1',0))
+    messages = Patientmesage.objects.all()
+    list=[]
+    for message in messages:
+        list.append([message.Text,message.Time])
+    return JsonResponse({"data":list})
+
+
+def chatexpert(request,num):
+    patient = Patients.objects.get(pk=num)
+    expert = Expert.objects.get(Phonenumber = request.session.get('k4',0))
+    messages = Expertmessage.objects.all()
+    list = []
+    for message in messages:
+        list.append([message.Text, message.Time])
+    return JsonResponse({"data": list})
+
 
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont

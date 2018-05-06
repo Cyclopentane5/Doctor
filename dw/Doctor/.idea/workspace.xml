@@ -10,89 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hospital/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="664">
-              <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Hospital/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="332" column="18" selection-start-line="332" selection-start-column="18" selection-end-line="332" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="consultexpert.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Hospital/consultexpert.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emessage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Hospital/emessage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hospital/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="111" column="22" lean-forward="true" selection-start-line="111" selection-start-column="22" selection-end-line="111" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hospital/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="71" column="56" lean-forward="true" selection-start-line="71" selection-start-column="56" selection-end-line="71" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="expertlogin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Hospital/expertlogin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Plogin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Hospital/Plogin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="psuccess.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Hospital/psuccess.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -104,7 +22,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>General</find>
       <find>pregist</find>
       <find>Register</find>
       <find>Departmentinfo.html</find>
@@ -134,15 +51,12 @@
       <find>icon</find>
       <find>print</find>
       <find>consu</find>
+      <find>consult</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/Hospital/Hospialdetail.html" />
-        <option value="$PROJECT_DIR$/templates/Hospital/Hospitaldetail.html" />
-        <option value="$PROJECT_DIR$/templates/Hospital/Department.html" />
-        <option value="$PROJECT_DIR$/Hospital/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/templates/Hospital/Doctor.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/DepartmentInfo.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/FrontPage.html" />
@@ -181,19 +95,23 @@
         <option value="$PROJECT_DIR$/Doctor/settings.py" />
         <option value="$PROJECT_DIR$/templates/Hospital/consultexpert.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/General.html" />
-        <option value="$PROJECT_DIR$/templates/Hospital/psuccess.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/expertlogin.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/false3.html" />
         <option value="$PROJECT_DIR$/templates/Hospital/esuccess.html" />
-        <option value="$PROJECT_DIR$/Hospital/urls.py" />
         <option value="$PROJECT_DIR$/Hospital/admin.py" />
         <option value="$PROJECT_DIR$/Hospital/models.py" />
         <option value="$PROJECT_DIR$/templates/Hospital/emessage.html" />
+        <option value="$PROJECT_DIR$/templates/Hospital/chatboxexpert.html" />
+        <option value="$PROJECT_DIR$/templates/Hospital/chatboxpatient.html" />
+        <option value="$PROJECT_DIR$/Hospital/urls.py" />
+        <option value="$PROJECT_DIR$/templates/Hospital/psuccess.html" />
         <option value="$PROJECT_DIR$/Hospital/views.py" />
+        <option value="$PROJECT_DIR$/static/Hospital/js/chatboxpatient.js" />
+        <option value="$PROJECT_DIR$/static/Hospital/js/chatboxexpert.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="35" />
     <option name="y" value="70" />
     <option name="width" value="1750" />
@@ -211,22 +129,6 @@
             <path>
               <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-              <item name="Hospital" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-              <item name="Hospital" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
@@ -250,12 +152,6 @@
               <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
               <item name="Doctor" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Doctor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Doctor" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Hospital" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -325,9 +221,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14778645" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32968536" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
@@ -355,22 +250,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/Patient.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/123.html" />
-    <entry file="file://$PROJECT_DIR$/Hospital/search_indexes.py" />
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/postblog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="48" lean-forward="true" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Hospital/addrecord.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
@@ -626,13 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/expertlogin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Hospital/Plogin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -640,10 +512,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/psuccess.html">
+    <entry file="file://$PROJECT_DIR$/templates/Hospital/esuccess.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        <state relative-caret-position="152">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Hospital/expertlogin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -661,10 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/esuccess.html">
+    <entry file="file://$PROJECT_DIR$/templates/Hospital/emessage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        <state relative-caret-position="190">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -675,24 +554,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Hospital/emessage.html">
+    <entry file="file://$PROJECT_DIR$/templates/Hospital/psuccess.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        <state relative-caret-position="304">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hospital/urls.py">
+    <entry file="file://$PROJECT_DIR$/static/Hospital/js/chatboxexpert.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+        <state relative-caret-position="133">
+          <caret line="7" column="42" lean-forward="true" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/Hospital/js/chatboxpatient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="17" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Hospital/chatboxexpert.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Hospital/chatboxpatient.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="76" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="76" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Hospital/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="332" column="18" selection-start-line="332" selection-start-column="18" selection-end-line="332" selection-end-column="18" />
+        <state relative-caret-position="431">
+          <caret line="353" column="42" lean-forward="true" selection-start-line="353" selection-start-column="42" selection-end-line="353" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hospital/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
         </state>
       </provider>
     </entry>
