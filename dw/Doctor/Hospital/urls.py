@@ -29,6 +29,8 @@ urlpatterns = [
     url('^manage/(\d+)/$',views.addrecord),
     url('^manage/(\d+)/success/$',views.saddrecord),
     url('^SearchName/$',views.searchname),
+    url('^SearchName/(\d+)/$',views.HospitalList),
+    url('^SearchName/(\d+)/(\d+)/$',views.RegisterInfo),
     url('^showchangeinfo/$',views.showchangeinfo),
     url('^changeinfo/$',views.changeinfo),
     url('^verifycode/$',views.verifycode),
