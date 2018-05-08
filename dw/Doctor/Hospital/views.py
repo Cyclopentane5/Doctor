@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import time
 # Create your views here.
 from django.http import HttpResponse,HttpResponseRedirect
 
@@ -9,7 +9,7 @@ def index(request):
 def detail(request,num):
     return HttpResponse("detail -%s"%(num))
 
-from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Expertmessage,Patientmesage
+from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Message
 from django.http import JsonResponse
 
 def General(request):
@@ -238,7 +238,7 @@ def postblog(request):
     return render(request,'Hospital/postblog.html')
 
 def showblog(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by("Time")
     return render(request,'Hospital/Blog.html',{"blogs":blogs})
 
 def showpostblog(request):
@@ -246,7 +246,7 @@ def showpostblog(request):
     title = request.POST.get("title")
     text = request.POST.get("text")
     blo = Blog
-    blog = blo.createBlog(blo,author,title,text,'2018-5-3 23:36')
+    blog = blo.createBlog(blo,author,title,text)
     blog.save()
     return render(request,'Hospital/postsuccess.html')
 
@@ -294,7 +294,7 @@ def showpostcomment(request,num):
     blog = Blog.objects.get(pk=num)
     text = request.POST.get("text")
     com1  = Comment
-    comment1 = com1.createComment(com1,author,blog,text,'2018-5-3 23:36')
+    comment1 = com1.createComment(com1,author,blog,text)
     comment1.save()
     return render(request,'Hospital/postsuccess.html')
 
@@ -311,7 +311,6 @@ def expertlogin(request):
 def esuccess(request):
     if request.session.get('k4',0)==0:
         phonenumber = request.POST.get("phonenumber")
-
         password = request.POST.get("password")
         password=int(password)
         verify = request.POST.get("verify")
@@ -329,7 +328,7 @@ def esuccess(request):
         return render(request,'Hospital/esuccess.html')
 
 def emessage(request):
-    messages = Expertmessage.objects.filter(Expert__Phonenumber=request.session.get('k4',0)).values("Patients__Name","Patients").distinct()
+    messages = Message.objects.filter(Expert__Phonenumber=request.session.get('k4',0)).values("Patients__Name","Patients").distinct()
     return render(request,'Hospital/emessage.html',{"messages":messages})
 
 def chatboxpatient(request,num):
@@ -341,22 +340,53 @@ def chatboxexpert(request,num):
 def chatpatient(request,num):
     expert = Expert.objects.get(pk=num)
     patient = Patients.objects.get(Phonenumber = request.session.get('k1',0))
-    messages = Patientmesage.objects.all()
-    list=[]
-    for message in messages:
-        list.append([message.Text,message.Time])
-    return JsonResponse({"data":list})
+    messages1 = Message.objects.filter(Expert=expert).filter(Patients=patient).order_by("Time")
+    list1=[]
+    for message in messages1:
+        list1.append([message.Tag,message.Text,message.Time])
+    return JsonResponse({"data":list1,})
 
+def deltaTime(self, year=0, month=0, day=0, hour=0, minute=0, second=0):
+    t = time.localtime()
+    return "%04d%02d%02d%02d%02d%02d"%(
+    t.tm_year + year, t.tm_mon + month, t.tm_mday + day, t.tm_hour + hour, t.tm_min + minute, t.tm_sec + second)
 
 def chatexpert(request,num):
     patient = Patients.objects.get(pk=num)
     expert = Expert.objects.get(Phonenumber = request.session.get('k4',0))
-    messages = Expertmessage.objects.all()
-    list = []
-    for message in messages:
-        list.append([message.Text, message.Time])
-    return JsonResponse({"data": list})
+    messages1 = Message.objects.filter(Expert=expert).filter(Patients=patient).order_by("Time")
+    list1 = []
+    for message in messages1:
+        list1.append([message.Tag,message.Text, message.Time,message.Tag])
+    return JsonResponse({"data": list1})
 
+def psendmessage(request,num):
+    expert = Expert.objects.get(pk=num)
+    patient = Patients.objects.get(Phonenumber=request.session.get('k1', 0))
+    print()
+    text = request.POST.get("text")
+    print(text)
+    tag = "Patients: "
+    mes = Message
+    message = mes.createmessage(mes,expert,patient,text,tag)
+    message.save()
+    a=""
+    a = "/consultexpert/"+str(num)
+    return HttpResponseRedirect(a)
+
+def esendmessage(request,num):
+    patient = Patients.objects.get(pk=num)
+    expert = Expert.objects.get(Phonenumber=request.session.get('k4', 0))
+    print(expert)
+    text = request.POST.get("text")
+    print(text)
+    tag = "Expert: "
+    mes = Message
+    message = mes.createmessage(mes, expert, patient, text, tag)
+    message.save()
+    a=""
+    a = "/emessage/" + str(num)
+    return HttpResponseRedirect(a)
 
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont

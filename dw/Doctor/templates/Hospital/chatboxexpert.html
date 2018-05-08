@@ -9,5 +9,15 @@
     <h3>chat</h3>
     <button id = "btn">message</button>
     <script type="text/javascript" src = "/static/Hospital/js/chatboxexpert.js/"></script>
+<p id="a" >
+
+</p>
+
+<form action = "send/" method = "post">
+    {% csrf_token %}
+    Text <input type = "text" name = "text"/>
+    <hr/>
+    <input type ="submit" name = "send"/>
+</form>
 </body>
 </html>

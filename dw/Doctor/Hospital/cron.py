@@ -9,13 +9,8 @@ def createDataSet():
                    ['my', 'dalmation', 'is', 'so', 'cute', 'I', 'love', 'him'],
                    ['stop', 'posting', 'stupid', 'worthless', 'garbage'],
                    ['mr', 'licks', 'ate', 'my', 'steak', 'how', 'to', 'stop', 'him'],
-                   ['quit', 'buying', 'worthless', 'dog', 'food', 'stupid'],
-                   ['you', 'are', 'shit', 'ass'],
-                   ['shit', 'idiot'],
-                   ['ass', 'hole', 'bull'],
-                   ['you', 'look', 'pretty', 'nice']]
-
-    classVec = [0, 1, 0, 1, 0, 1, 1, 1, 1, 0]
+                   ['quit', 'buying', 'worthless', 'dog', 'food', 'stupid']]
+    classVec = [0, 1, 0, 1, 0, 1]
     return postingList,classVec
 
 def createVocaList(postingList):

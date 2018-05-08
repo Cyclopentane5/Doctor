@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Hospital,Doctor,Department,Patients,Register,Record,District,DepartmentInfo,DepartmentList,Blog,Comment,Expert,Patientmesage,Expertmessage
+from .models import Hospital,Doctor,Department,Patients,Register,Record,District,DepartmentInfo,DepartmentList,Blog,Comment,Expert,Message
 class showDoctor(admin.ModelAdmin):
     list_display = ['pk','Hospital','Name','Department','Doctorid','Phonenumber']
     list_filter = ['Name']
@@ -62,14 +62,10 @@ class showExpert(admin.ModelAdmin):
     list_filter = ['Name']
     search_fields = ['Name']
 
-class showexpertmessage(admin.ModelAdmin):
-    list_display = ['Patients','Expert', 'Text', 'Time']
-    list_filter = ['Text']
-    search_fields = ['Text']
 
 
-class showpatientmessage(admin.ModelAdmin):
-    list_display = ['Expert','Patients', 'Text', 'Time']
+class showMessage(admin.ModelAdmin):
+    list_display = ['Expert','Patients', 'Text', 'Time', 'Tag']
     list_filter = ['Text']
     search_fields = ['Text']
 
@@ -86,5 +82,4 @@ admin.site.register(Record,showRecord)
 admin.site.register(Blog,showBlog)
 admin.site.register(Comment,showComment)
 admin.site.register(Expert,showExpert)
-admin.site.register(Expertmessage,showexpertmessage)
-admin.site.register(Patientmesage,showpatientmessage)
+admin.site.register(Message,showMessage)

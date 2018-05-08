@@ -1,17 +1,21 @@
-$(document).ready(function (){
-    document.getElementById("btn").onclick =
-    function (){
+
+function reloadView(){
        $.ajax({
             type : "get",
             url:"chat/",
             datatype:"json",
+
             success:function(data,status){
-               console.log(data)
-                var d = data["data"]
+                var d = data["data"];
+                var str = "";
                 for(var i=0; i<d.length;i++){
-                    document.write('<p>'+d[i][0]+'</p>')
+                    str = str+d[i]+"<hr/>";
                 }
+
+                var $p = document.getElementById("a");
+                $p.innerHTML=str;
             }
-       })
-    }
-})
+     })
+}
+setInterval('reloadView()',100);
+

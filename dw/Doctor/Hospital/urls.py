@@ -56,5 +56,7 @@ urlpatterns = [
     url('^consultexpert/(\d+)/$',views.chatboxpatient),
     url('^emessage/(\d+)/$',views.chatboxexpert),
     url('^consultexpert/(\d+)/chat/$',views.chatpatient),
+    url('^consultexpert/(\d+)/send/$',views.psendmessage),
     url('^emessage/(\d+)/chat/$',views.chatexpert),
+    url('^emessage/(\d+)/send/$',views.esendmessage),
 ]

@@ -86,22 +86,22 @@ class Blog(models.Model):
     Author = models.ForeignKey("Patients",on_delete=models.CASCADE)
     Title = models.CharField(max_length=100)
     Text = models.CharField(max_length=3000)
-    Time = models.DateTimeField()
+    Time = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.Title
-    def createBlog(blo,author,title,text,time):
-        blog = blo(Author=author,Title=title,Text=text,Time=time)
+    def createBlog(blo,author,title,text):
+        blog = blo(Author=author,Title=title,Text=text)
         return blog
 
 class Comment(models.Model):
     Author = models.ForeignKey("Patients",on_delete=models.CASCADE)
     Blog = models.ForeignKey("Blog",on_delete=models.CASCADE)
     Text = models.CharField(max_length=1000)
-    Time = models.DateTimeField()
+    Time = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.Text
-    def createComment(com,author,blog,text,time):
-        comment = com(Author=author,Blog=blog,Text=text,Time=time)
+    def createComment(com,author,blog,text):
+        comment = com(Author=author,Blog=blog,Text=text)
         return comment
 
 class Expert(models.Model):
@@ -112,25 +112,16 @@ class Expert(models.Model):
     def __str__(self):
         return self.Name
 
-class Patientmesage(models.Model):
+class Message(models.Model):
     Expert = models.ForeignKey("Expert",on_delete=models.CASCADE)
     Patients = models.ForeignKey("Patients",on_delete=models.CASCADE)
     Text = models.CharField(max_length=1000)
-    Time = models.DateTimeField()
+    Time = models.DateTimeField(auto_now=True)
+    Tag = models.CharField(max_length=50)
     def __str__(self):
         return self.Text
-    def createPatientmessage(pm,expert,text,time):
-        patientmessage = pm(Expert=expert,Text = text,Time = time)
-        return patientmessage
+    def createmessage(m,expert,patient,text,tag):
+        message = m(Expert=expert,Patients=patient,Text = text,Tag=tag)
+        return message
 
 
-class Expertmessage(models.Model):
-    Patients = models.ForeignKey("Patients",on_delete=models.CASCADE)
-    Expert = models.ForeignKey("Expert", on_delete=models.CASCADE)
-    Text = models.CharField(max_length=1000)
-    Time = models.DateTimeField()
-    def __str__(self):
-        return self.Text
-    def createExpertmessage(em,patients,text,time):
-        expertmessage = em(Patients=patients,Text=text,Time = time)
-        return expertmessage
