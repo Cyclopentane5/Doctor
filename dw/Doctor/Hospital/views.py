@@ -357,7 +357,7 @@ def chatexpert(request,num):
     messages1 = Message.objects.filter(Expert=expert).filter(Patients=patient).order_by("Time")
     list1 = []
     for message in messages1:
-        list1.append([message.Tag,message.Text, message.Time,message.Tag])
+        list1.append([message.Tag,message.Text, message.Time])
     return JsonResponse({"data": list1})
 
 def psendmessage(request,num):
