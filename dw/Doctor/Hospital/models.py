@@ -47,6 +47,9 @@ class DepartmentInfo(models.Model):
     Time = models.DateField()
     def __str__(self):
         return  self.Department.Name
+    def createDepartmentinfo(info,department,hospital,restnumber,time):
+        departmentinfo = info(Department=department,Hospital=hospital,Restnumber = restnumber,Time=time)
+        return departmentinfo
 
 class Doctor(models.Model):
     Hospital = models.ForeignKey("Hospital",on_delete=models.CASCADE)
@@ -108,7 +111,7 @@ class Expert(models.Model):
     Name = models.CharField(max_length=30)
     Phonenumber = models.IntegerField(default=0)
     Info = models.CharField(max_length=500)
-    Password = models.IntegerField(default=0)
+    Password = models.CharField(max_length=30)
     def __str__(self):
         return self.Name
 
@@ -124,4 +127,20 @@ class Message(models.Model):
         message = m(Expert=expert,Patients=patient,Text = text,Tag=tag)
         return message
 
+class Advise(models.Model):
+    Text = models.CharField(max_length=3000)
+    def __str__(self):
+        return self.Text
+    def createadvise(a,text):
+        advise = a(Text = text)
+        return advise
 
+class Announcement(models.Model):
+    Title = models.CharField(max_length=100)
+    Text = models.CharField(max_length=3000)
+    Time = models.DateField(auto_now=True)
+    def __str__(self):
+        return self.Title
+    def createannouncement(anno,title,text):
+        announcement = anno(Title=title,Text=text)
+        return announcement

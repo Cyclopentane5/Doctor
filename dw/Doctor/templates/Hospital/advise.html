@@ -5,13 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="/esuccess/" method="post">
+    <form action="/getadvise/" method="post">
         {% csrf_token %}
-        Phonenumber <input type = "text" name = "phonenumber"/>
+        Advise: <input type = "text" name = "advise"/>
         <hr/>
-        Password <input type = "password" name = "password"/>
-        <hr/>
-        Text <input type = "text" name = "verify"/>
+        Text: <input type = "text" name = "verify"/>
         <img src="/verifycode/">
         <hr/>
         <input type ="submit" name = "login"/>

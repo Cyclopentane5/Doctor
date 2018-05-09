@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     url('^$',views.index),
-    url('^(\d+)/$',views.detail),
     url('^generals/$',views.General),
     url('^FrontPage/$', views.DepartmenttoHospital),
     url('^FrontPage/(\d+)/$', views.HospitalList),
@@ -59,4 +58,6 @@ urlpatterns = [
     url('^consultexpert/(\d+)/send/$',views.psendmessage),
     url('^emessage/(\d+)/chat/$',views.chatexpert),
     url('^emessage/(\d+)/send/$',views.esendmessage),
+    url('^advise/$',views.advise),
+    url('^getadvise/$',views.getadvise),
 ]

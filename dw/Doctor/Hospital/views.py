@@ -1,15 +1,12 @@
 from django.shortcuts import render
-import time
 # Create your views here.
 from django.http import HttpResponse,HttpResponseRedirect
+from django.utils.timezone import now, timedelta
 
 def index(request):
-    return HttpResponse("Django is good")
+    return render(request,'Hospital/index.html')
 
-def detail(request,num):
-    return HttpResponse("detail -%s"%(num))
-
-from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Message
+from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Message,Advise
 from django.http import JsonResponse
 
 def General(request):
@@ -20,7 +17,7 @@ def General(request):
     else:
         patient = Patients.objects.get(Phonenumber = info)
         a = patient.Name
-    return render(request,'Hospital/General.html',{'name':a})
+    return render(request,'Hospital/General.html',{"name":a})
 
 def DepartmenttoHospital(request):
     DepartmentL = Department.objects.all()
@@ -31,7 +28,8 @@ def HospitalList(request,Department):
     return render(request,'Hospital/Hospitallist.html',{"hospitals":Hospitallist})
 
 def RegisterInfo(request,Department,Hospital):
-    DepartmentInfoD = DepartmentInfo.objects.filter(Department__pk=Department).filter(Hospital__pk=Hospital)
+    date = now().date() + timedelta(days=0)
+    DepartmentInfoD = DepartmentInfo.objects.filter(Department__pk=Department).filter(Hospital__pk=Hospital).filter(Time__gte=date)
     a = DepartmentInfoD.values_list('pk',flat=True)
     x=0
     for value in a:
@@ -53,7 +51,8 @@ def HospitaltoDepartment(request,District,Hospital):
     return render(request,'Hospital/DepartmentHospital.html',{"departments":DepartmentList1})
 
 def departmentregister(request,District,Hospital,Department):
-    DepartmentInfoD = DepartmentInfo.objects.filter(Department__pk=Department).filter(Hospital__pk=Hospital)
+    date = now().date() + timedelta(days=0)
+    DepartmentInfoD = DepartmentInfo.objects.filter(Department__pk=Department).filter(Hospital__pk=Hospital).filter(Time__gte=date)
     a = DepartmentInfoD.values_list('pk',flat=True)
     x=0
     for value in a:
@@ -69,7 +68,8 @@ def signup(request):
     password1 = request.POST.get("password1")
     password2 = request.POST.get("password2")
     verify = request.POST.get("verify")
-    if password1==password2 and verify==request.session.get("verifycode",0):
+    if password1==password2 and verify==request.session.get("verifycode",0) and phonenumber.isdigit():
+        phonenumber = int(phonenumber)
         pat = Patients
         patient = pat.createPatients(pat,name,age,gender,phonenumber,password1)
         patient.save()
@@ -95,6 +95,9 @@ def showdlogin(request):
 def plogin(request):
     if request.session.get('k1',0)==0:
         phonenumber = request.POST.get("phonenumber")
+        if phonenumber.isdigit()==False:
+            return render(request,'Hospital/false2.html')
+        phonenumber = int(phonenumber)
         password = request.POST.get("password")
         verify = request.POST.get("verify")
         patients = Patients.objects.values_list('Password',flat=True).filter(Phonenumber = phonenumber)
@@ -103,6 +106,8 @@ def plogin(request):
             a = patient
         if a==password and verify==request.session.get('verifycode',0):
             request.session['k1']=phonenumber
+            request.session['k3'] = 0
+            request.session['k4'] = 0
             request.session.set_expiry(900)
             return render(request,'Hospital/psuccess.html')
         else:
@@ -112,21 +117,25 @@ def plogin(request):
 
 def dlogin(request):
     if request.session.get('k3',0)==0:
-        phonenumer = request.POST.get("phonenumber")
+        phonenumber = request.POST.get("phonenumber")
         password = request.POST.get("password")
         verify = request.POST.get("verify")
-        Doctor1 = Doctor.objects.values_list('Password',flat=True).filter(Phonenumber = phonenumer)
+        if phonenumber.isdigit() == False:
+            return render(request, 'Hospital/false.html')
+        phonenumber=int(phonenumber)
+        Doctor1 = Doctor.objects.values_list('Password',flat=True).filter(Phonenumber = phonenumber)
         a=0
         for doctor in Doctor1:
             a=doctor
         if a==password and verify==request.session.get('verifycode',0):
-            request.session['k3']=phonenumer
-            request.session.set_expiry(300)
+            request.session['k3']=phonenumber
+            request.session['k1'] = 0
+            request.session['k4'] = 0
+            request.session.set_expiry(900)
             doctor = Doctor.objects.get(Phonenumber = request.session.get('k3',None))
             department = doctor.Department
             hospital = doctor.Hospital
             departmentinfos = DepartmentInfo.objects.filter(Department=department).filter(Hospital=hospital)
-
             return render(request,'Hospital/dsuccess.html',{"departmentinfos":departmentinfos})
         else:
             return render(request,'Hospital/false.html')
@@ -139,6 +148,8 @@ def dlogin(request):
 
 def pregister(request):
     if  request.session.get('k2',None)!=0:
+        if request.session.get('k1',0)==0:
+            return render(request, 'Hospital/false5.html')
         DepartmentInfo1 = DepartmentInfo.objects.get(pk=request.session.get('k2',None))
         DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
         DepartmentInfo1.save()
@@ -151,7 +162,7 @@ def pregister(request):
         register.save()
         return render(request,'Hospital/success.html')
     else:
-        return render(request,'Hospital/false.html')
+        return render(request,'Hospital/false5.html')
 
 def showregister(request):
     Patient = Patients.objects.get(Phonenumber = request.session.get('k1',None))
@@ -251,7 +262,7 @@ def showpostblog(request):
     return render(request,'Hospital/postsuccess.html')
 
 def comment(request,num):
-    comments = Comment.objects.filter(Blog=num)
+    comments = Comment.objects.filter(Blog=num).order_by("Time")
     return render(request,'Hospital/comment.html',{"comments":comments})
 
 def deleteblog(request,num):
@@ -312,14 +323,18 @@ def esuccess(request):
     if request.session.get('k4',0)==0:
         phonenumber = request.POST.get("phonenumber")
         password = request.POST.get("password")
-        password=int(password)
         verify = request.POST.get("verify")
+        if phonenumber.isdigit() == False:
+            return render(request, 'Hospital/false3.html')
+        phonenumber = int(phonenumber)
         experts  = Expert.objects.values_list('Password',flat = True).filter(Phonenumber = phonenumber)
         a=0
         for expert in experts:
             a=expert
         if a==password and verify==request.session.get('verifycode',0):
             request.session['k4']=phonenumber
+            request.session['k1'] = 0
+            request.session['k3'] = 0
             request.session.set_expiry(900)
             return render(request,'Hospital/esuccess.html')
         else:
@@ -343,13 +358,8 @@ def chatpatient(request,num):
     messages1 = Message.objects.filter(Expert=expert).filter(Patients=patient).order_by("Time")
     list1=[]
     for message in messages1:
-        list1.append([message.Tag,message.Text,message.Time])
+        list1.append([message.Tag,message.Text])
     return JsonResponse({"data":list1,})
-
-def deltaTime(self, year=0, month=0, day=0, hour=0, minute=0, second=0):
-    t = time.localtime()
-    return "%04d%02d%02d%02d%02d%02d"%(
-    t.tm_year + year, t.tm_mon + month, t.tm_mday + day, t.tm_hour + hour, t.tm_min + minute, t.tm_sec + second)
 
 def chatexpert(request,num):
     patient = Patients.objects.get(pk=num)
@@ -357,7 +367,7 @@ def chatexpert(request,num):
     messages1 = Message.objects.filter(Expert=expert).filter(Patients=patient).order_by("Time")
     list1 = []
     for message in messages1:
-        list1.append([message.Tag,message.Text, message.Time])
+        list1.append([message.Tag,message.Text])
     return JsonResponse({"data": list1})
 
 def psendmessage(request,num):
@@ -387,6 +397,21 @@ def esendmessage(request,num):
     a=""
     a = "/emessage/" + str(num)
     return HttpResponseRedirect(a)
+
+def advise(request):
+    return render(request,'Hospital/advise.html')
+
+def getadvise(request):
+    advise = request.POST.get("advise")
+    verify = request.POST.get("verify")
+    if verify==request.session.get('verifycode',0):
+        ad = Advise
+        advise = ad.createadvise(ad,advise)
+        advise.save()
+        return render(request,'Hospital/success.html')
+    else:
+        return render(request,'Hospital/false4.html')
+
 
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont
@@ -430,5 +455,4 @@ def verifycode(request):
 
 
 class changemanager():
-
     pass

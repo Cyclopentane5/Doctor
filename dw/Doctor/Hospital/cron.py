@@ -2,6 +2,7 @@ from Hospital.models import DepartmentInfo,Comment,Blog
 from Hospital.views import changemanager
 from pandas import *
 from numpy import *
+from django.utils.timezone import now, timedelta
 
 def createDataSet():
     postingList = [['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],
@@ -81,8 +82,10 @@ list_pAbusive,list_pnoAbusive,pAbusive=train_dataset(returnVec,classVec)
 
 
 def clock():
+    date = now().date() + timedelta(days=0)
     infos = DepartmentInfo.objects.all()
     for info in infos:
+        info.Time = date
         info.Restnumber=info.Restnumber+50
         info.save()
 
