@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {%for info in infos%}
+        <li>
+            {{info.Title}}--{{info.Text}}--{{info.Time}}
+        </li>
+        {%empty%}
+        <h3>nothing yet</h3>
+        {%endfor%}
+    </ul>
+    <a href="/generals/">return to first page</a>
+</body>
+</html>

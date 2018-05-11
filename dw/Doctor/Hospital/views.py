@@ -6,7 +6,7 @@ from django.utils.timezone import now, timedelta
 def index(request):
     return render(request,'Hospital/index.html')
 
-from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Message,Advise
+from Hospital.models import Hospital,Patients,Doctor,Register,Record,Department,DepartmentList,DepartmentInfo,District,Blog,Comment,Expert,Message,Advise,Announcement
 from django.http import JsonResponse
 
 def General(request):
@@ -228,8 +228,24 @@ def check(request,num):
     register = Register.objects.get(pk=num)
     patient = register.Patients
     records = Record.objects.filter(Patient=patient)
-    return render(request,'Hospital/check.html',{"records":records})
+    list = ""
+    if len(records)==0:
+        list = "No result"
+    return render(request,'Hospital/check.html',{"records1":records,"list":list,"num":num})
 
+def checksearch(request,num):
+    text = request.POST.get("text")
+    register = Register.objects.get(pk=num)
+    patient = register.Patients
+    list = ""
+    records1 = Record.objects.filter(Patient=patient).filter(NP__icontains=text)
+    records2 = Record.objects.filter(Patient=patient).filter(Name__icontains=text)
+    records3 = Record.objects.filter(Patient=patient).filter(Info__icontains=text)
+    if len(records1)==0 and len(records2)==0 and len(records3)==0:
+        list = "No result"
+    if text == "":
+        return render(request, 'Hospital/check.html', {"records1": records1, "list": list, "num": num})
+    return render(request, 'Hospital/check.html', {"records1": records1,"records2":records2,"records3":records3,"list":list,"num":num})
 
 def addnumber(request,num):
    return render(request,'Hospital/addregister.html')
@@ -438,10 +454,39 @@ def viewrecord(request,num):
 def showviewrecord(request,num):
     patient = Patients.objects.get(pk=num)
     password = request.POST.get("password")
+    request.session['k5']=1
+    request.session.set_expiry(900)
     if patient.Password==password:
         records = Record.objects.filter(Patient=patient)
-        return render(request,'Hospital/check1.html',{"records":records})
+        list = ""
+        if len(records)==0:
+            list = "no result"
+        return render(request,'Hospital/check1.html',{"records1":records,"list":list,"num":num})
     return render(request,'Hospital/false6.html')
+
+def searchviewrecord(request,num):
+    text = request.POST.get("text")
+    patient = Patients.objects.get(pk=num)
+    if request.session.get('k5',0)!=0:
+        records = Record.objects.filter(Patient=patient)
+        records1 = Record.objects.filter(Patient=patient).filter(NP__icontains=text)
+        records2 = Record.objects.filter(Patient=patient).filter(Name__icontains=text)
+        records3 = Record.objects.filter(Patient=patient).filter(Info__icontains=text)
+        list = ""
+        list1 = ""
+        if len(records)==0:
+            list1="no result"
+        if text =="":
+            return render(request,'Hospital/check1.html',{"records1":records,"list":list,"num":num})
+        if len(records1)==0 and len(records2)==0 and len(records3)==0:
+            list = "no result"
+        return render(request,'Hospital/check1.html',{"records1": records1,"records2": records2,"records3": records3, "list": list,"num":num})
+    else:
+        return render(request,'Hospital/generals.html')
+
+def announcement(request):
+    announcement = Announcement.objects.all()
+    return render(request,'Hospital/announcement.html',{"infos":announcement})
 
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont

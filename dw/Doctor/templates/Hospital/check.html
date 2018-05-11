@@ -6,14 +6,36 @@
 </head>
 <body>
     <ul>
-        {%for record in records%}
+        {%for record in records1%}
         <li>
             {{record.Doctor}}--{{record.Patient}}--{{record.NP}}--{{record.Name}}--{{record.Info}}
         </li>
         {%empty%}
-        <h3>No record yet</h3>
         {%endfor%}
     </ul>
+    <ul>
+        {%for record in records2%}
+        <li>
+            {{record.Doctor}}--{{record.Patient}}--{{record.NP}}--{{record.Name}}--{{record.Info}}
+        </li>
+        {%empty%}
+        {%endfor%}
+    </ul>
+    <ul>
+        {%for record in records3%}
+        <li>
+            {{record.Doctor}}--{{record.Patient}}--{{record.NP}}--{{record.Name}}--{{record.Info}}
+        </li>
+        {%empty%}
+        {%endfor%}
+    </ul>
+    <h3>{{list}}</h3>
+    <form action="/manage/{{num}}/check/search/" method="post">
+        {% csrf_token %}
+        Search <input type = "text" name = "text"/>
+        <hr/>
+        <input type ="submit" name = "search"/>
+    </form>
     <a href="/manage/">return to manage page</a>
 </body>
 </html>

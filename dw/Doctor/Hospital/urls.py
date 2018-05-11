@@ -29,6 +29,7 @@ urlpatterns = [
     url('^manage/$',views.manage),
     url('^manage/(\d+)/$',views.addrecord),
     url('^manage/(\d+)/check/$',views.check),
+    url('^manage/(\d+)/check/search/$',views.checksearch),
     url('^manage/(\d+)/success/$',views.saddrecord),
     url('^SearchName/$',views.searchname),
     url('^SearchName/(\d+)/$',views.HospitalList),
@@ -62,8 +63,10 @@ urlpatterns = [
     url('^consultexpert/(\d+)/send/$',views.psendmessage),
     url('^emessage/(\d+)/view/$',views.viewrecord),
     url('^emessage/(\d+)/view/show/$',views.showviewrecord),
+    url('^emessage/(\d+)/view/search/$', views.searchviewrecord),
     url('^emessage/(\d+)/chat/$',views.chatexpert),
     url('^emessage/(\d+)/send/$',views.esendmessage),
     url('^advise/$',views.advise),
     url('^getadvise/$',views.getadvise),
+    url('^announcement/$',views.announcement)
 ]
