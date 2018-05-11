@@ -53,11 +53,12 @@
             android:label="@string/app_name" >
             
         </activity>
-        <activity
-            android:name=".receiver"
-            android:label="@string/app_name" >
-            
-        </activity>
+       <receiver android:name=".receiver">
+            <intent-filter >  
+                <action android:name="android.intent.action.MY_BROADCAST"/>
+                 <category android:name="android.intent.category.DEFAULT" />  
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

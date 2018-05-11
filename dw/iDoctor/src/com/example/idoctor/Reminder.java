@@ -63,7 +63,7 @@ public class Reminder extends Activity{
 		
 	}
 	
-	void startRemind(int hour,int minute){
+void startRemind(int hour,int minute){
 		
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(System.currentTimeMillis());
