@@ -10,7 +10,7 @@
         {%for info in infos%}
         <li>
             {{info.Department}}--{{info.Hospital}}--{{info.Restnumber}}--{{info.Time}}
-            <a href="/pregister/">register</a>
+            <a href="{{info.pk}}">register</a>
         </li>
         {% empty %}
             <h3>No available register yet</h3>

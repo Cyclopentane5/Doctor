@@ -146,23 +146,35 @@ def dlogin(request):
         departmentinfos =DepartmentInfo.objects.filter(Department=department).filter(Hospital=hospital)
         return render(request,'Hospital/dsuccess.html',{"departmentinfos":departmentinfos})
 
-def pregister(request):
-    if  request.session.get('k2',None)!=0:
-        if request.session.get('k1',0)==0:
-            return render(request, 'Hospital/false5.html')
-        DepartmentInfo1 = DepartmentInfo.objects.get(pk=request.session.get('k2',None))
-        DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
-        DepartmentInfo1.save()
-        Patient = Patients.objects.get(Phonenumber=request.session.get('k1',None))
-        Hospital = DepartmentInfo1.Hospital
-        Department = DepartmentInfo1.Department
-        Time = DepartmentInfo1.Time
-        reg = Register
-        register = reg.createRegister(reg,Hospital,Department,Patient,Time)
-        register.save()
-        return render(request,'Hospital/success.html')
-    else:
-        return render(request,'Hospital/false5.html')
+def pregister(request,a,b,num):
+    if request.session.get('k1',0)==0:
+        return render(request, 'Hospital/false5.html')
+    DepartmentInfo1 = DepartmentInfo.objects.get(pk=num)
+    DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
+    DepartmentInfo1.save()
+    Patient = Patients.objects.get(Phonenumber=request.session.get('k1',None))
+    Hospital = DepartmentInfo1.Hospital
+    Department = DepartmentInfo1.Department
+    Time = DepartmentInfo1.Time
+    reg = Register
+    register = reg.createRegister(reg,Hospital,Department,Patient,Time)
+    register.save()
+    return render(request,'Hospital/success.html')
+
+def pregister1(request,a,b,c,num):
+    if request.session.get('k1',0)==0:
+        return render(request, 'Hospital/false5.html')
+    DepartmentInfo1 = DepartmentInfo.objects.get(pk=num)
+    DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
+    DepartmentInfo1.save()
+    Patient = Patients.objects.get(Phonenumber=request.session.get('k1',None))
+    Hospital = DepartmentInfo1.Hospital
+    Department = DepartmentInfo1.Department
+    Time = DepartmentInfo1.Time
+    reg = Register
+    register = reg.createRegister(reg,Hospital,Department,Patient,Time)
+    register.save()
+    return render(request,'Hospital/success.html')
 
 def showregister(request):
     Patient = Patients.objects.get(Phonenumber = request.session.get('k1',None))
@@ -189,10 +201,11 @@ def logout(request):
     return render(request,'Hospital/logout.html')
 
 def manage(request):
+    date = now().date() + timedelta(days=0)
     doctor = Doctor.objects.get(Phonenumber = request.session.get('k3',None))
     Department  =doctor.Department
     Hospital = doctor.Hospital
-    registerlist = Register.objects.filter(Department=Department).filter(Hospital=Hospital)
+    registerlist = Register.objects.filter(Department=Department).filter(Hospital=Hospital).filter(Time=date)
     return render(request,'Hospital/Manage.html',{"registers":registerlist})
 
 def addrecord(request,num):
@@ -210,6 +223,13 @@ def saddrecord(request,num):
     record = red.createRecord(red,register,doctor,patient,np,name,info)
     record.save()
     return render(request,'Hospital/success2.html')
+
+def check(request,num):
+    register = Register.objects.get(pk=num)
+    patient = register.Patients
+    records = Record.objects.filter(Patient=patient)
+    return render(request,'Hospital/check.html',{"records":records})
+
 
 def addnumber(request,num):
    return render(request,'Hospital/addregister.html')
@@ -412,6 +432,16 @@ def getadvise(request):
     else:
         return render(request,'Hospital/false4.html')
 
+def viewrecord(request,num):
+    return render(request,'Hospital/viewrecord.html')
+
+def showviewrecord(request,num):
+    patient = Patients.objects.get(pk=num)
+    password = request.POST.get("password")
+    if patient.Password==password:
+        records = Record.objects.filter(Patient=patient)
+        return render(request,'Hospital/check1.html',{"records":records})
+    return render(request,'Hospital/false6.html')
 
 def verifycode(request):
     from PIL import Image,ImageDraw,ImageFont

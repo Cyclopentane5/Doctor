@@ -10,7 +10,7 @@
     <ul>
          {%for departmentinfo in departmentinfos%}
             <li>
-                {{departmentinfo}}--{{departmentinfo.Time}}
+                {{departmentinfo}}--{{departmentinfo.Time}}--{{departmentinfo.Restnumber}}
                 <a href="{{departmentinfo.pk}}">add number</a>
             </li>
          {% empty %}

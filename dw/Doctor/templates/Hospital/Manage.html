@@ -8,13 +8,15 @@
 <ul>
     {%for register in registers%}
     <li>
-        {{register}}--{{register.Time}}
+        {{register}}--{{register.Time}}--{{register.Patients}}
         <a href="{{register.pk}}"> addrecord</a>
+        <a href="{{register.pk}}/check/">check record</a>
     </li>
     {% empty %}
         <h3>No register yet</h3>
     {%endfor%}
 
 </ul>
+<a href="/dsuccess/">return to last page</a>
 </body>
 </html>
