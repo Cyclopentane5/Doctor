@@ -16,24 +16,13 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 
 public class Network extends Activity{
-	Button button1;
 	String cookies = "";
     SharedPreferences sp;
 	WebView webview;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.network);
-		button1 = (Button) findViewById(R.id.button1);
-		 button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Network.this,MainActivity.class);
-				Network.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
 		initview();
 		
 	}

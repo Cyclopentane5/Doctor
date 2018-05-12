@@ -17,7 +17,6 @@ import android.widget.SimpleAdapter;
 
 public class Symptom extends Activity{
 	java.util.List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
-	Button button1;
 	ListView listview1;
 	String x;
 	String[] a = new String[20];
@@ -26,7 +25,7 @@ public class Symptom extends Activity{
 		setContentView(R.layout.symptom);
 		Intent intent  = getIntent();
 		x = intent.getStringExtra("name");
-		button1 = (Button) findViewById(R.id.button1);
+		
 		DBHelper dbHelper1 = new DBHelper(getApplicationContext());
 		Cursor cursor1 = dbHelper1.query1(2,x);
 		int i=0;
@@ -37,16 +36,7 @@ public class Symptom extends Activity{
 			a[i]=symptom;
 			i++;
 		}
-		button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Symptom.this,List.class);
-				Symptom.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
 		
 		listview1 = (ListView) findViewById(R.id.listView1);
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this,list1,R.layout.symptom1,new String[]{"symptom"},new int[]{R.id.textView1});

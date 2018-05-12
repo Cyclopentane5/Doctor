@@ -17,7 +17,7 @@ import android.widget.SimpleAdapter;
 
 public class Disease extends Activity{
 	java.util.List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
-	Button button1;
+	
 	ListView listView1;
 	String x;
 	String a;
@@ -61,18 +61,7 @@ public class Disease extends Activity{
 		};
 		listView1.setOnItemClickListener(itemClickListener);
 		
-		button1 = (Button) findViewById(R.id.button1);
-        button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Disease.this,Symptom.class);
-				intent.putExtra("name", x);
-				Disease.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
 }
 
 

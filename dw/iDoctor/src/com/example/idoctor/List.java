@@ -19,13 +19,12 @@ import android.widget.SimpleAdapter;
 public class List extends Activity{
 	java.util.List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
 	String[] a = new String[8];
-	Button button1;
 	ListView listview1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list);
-		button1 = (Button) findViewById(R.id.button1);
+		
 		DBHelper dbHelper = new DBHelper(getApplicationContext());
 		int i=0;
 		Cursor cursor = dbHelper.query(1);
@@ -37,16 +36,6 @@ public class List extends Activity{
 			i++;
 		}
 		dbHelper.close();
-		button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(List.this,MainActivity.class);
-				List.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
 		listview1 = (ListView) findViewById(R.id.listView1);
 		SimpleAdapter simpleAdapter = new SimpleAdapter(this,list1,R.layout.list1,new String[]{"name"},new int[]{R.id.textView1});

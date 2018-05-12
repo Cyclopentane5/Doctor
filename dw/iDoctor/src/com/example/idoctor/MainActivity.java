@@ -1,6 +1,8 @@
 package com.example.idoctor;
 
 import android.app.Activity;
+import android.app.ActivityGroup;
+import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,59 +10,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TabHost;
 
-public class MainActivity extends Activity {
-	Button button1,button2,button3,button4;
+public class MainActivity extends ActivityGroup {
+	
+	TabHost tabHost;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		button1 = (Button) findViewById(R.id.button1);
-		button2 = (Button) findViewById(R.id.button2);
-		button4 = (Button) findViewById(R.id.button4);
 		
-		button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this,List.class);
-				MainActivity.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
-		button2.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this,Network.class);
-				MainActivity.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		tabHost = (TabHost) findViewById(android.R.id.tabhost);  
+		tabHost.setup(getLocalActivityManager());
 		
-		button4.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this,Reminder.class);
-				MainActivity.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("selfdoctor" , getResources().getDrawable(R.drawable.ic_launcher)).setContent(new Intent(this, List.class)));  
+        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("network" , null).setContent(new Intent(this, Network.class)));  
+        tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("reminder" , null).setContent(new Intent(this, Reminder.class)));
+		
 	}
-
-	@Override
+	
+	
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
-	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long

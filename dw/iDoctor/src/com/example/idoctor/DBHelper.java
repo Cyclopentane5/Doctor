@@ -24,6 +24,8 @@ public class DBHelper extends SQLiteOpenHelper{
 		String sql = "create table part(name varchar(100))";
 		String sql1 = "create table symptom(part varchar(100),symptom varchar(100))";
 		String sql2 = "create table disease(symptom varchar(100),name varchar(50),ratio varchar(30),info varchar(200),treat varchar(200))";
+		String sql3 = "create table medicine(medicine varchar(100),info varchar(100))";
+		database.execSQL(sql3);
 		database.execSQL(sql);
 		database.execSQL(sql1);
 		database.execSQL(sql2);
@@ -78,6 +80,7 @@ public class DBHelper extends SQLiteOpenHelper{
 		}
 		
 		
+		
 		// TODO Auto-generated method stub
 		
 	}
@@ -87,6 +90,14 @@ public class DBHelper extends SQLiteOpenHelper{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	public void insert(ContentValues values){
+		SQLiteDatabase database = getWritableDatabase();
+			database.insert("medicine", null, values);
+			database.close();
+	}
+	
 	
 	public Cursor query(int number) {
 		SQLiteDatabase database=getWritableDatabase();
@@ -140,6 +151,34 @@ public class DBHelper extends SQLiteOpenHelper{
 		return cursor;
 	}
 	
+	public Cursor query4(int number) {
+		SQLiteDatabase database=getWritableDatabase();
+		Cursor cursor = null;
+		if (number==1){
+			cursor = database.query("medicine", null, null,null, null, null, null);
+			
+		}
+		return cursor;
+	}
 	
+	public Cursor query5(int number,String x) {
+		SQLiteDatabase database=getWritableDatabase();
+		Cursor cursor = null;
+		if (number==1){
+			cursor = database.query("medicine", null, "medicine=?",new String[]{x}, null, null, null);
+			
+		}
+		return cursor;
+	}
+	
+	public void delete(String name){
+		if(database==null)
+		{
+			database=getWritableDatabase();
+			database.delete("medicine", "medicine=?", new String[]{name});
+			
+		}
+	
+	}
 
 }
