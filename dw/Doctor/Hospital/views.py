@@ -115,6 +115,15 @@ def plogin(request):
     else:
         return render(request,'Hospital/psuccess.html')
 
+def ownrecord(request):
+    phonenumber = request.session.get('k1',0)
+    print(phonenumber)
+    if request.session.get('k1',0)==0:
+        return render(request,'Hospital/General.html')
+    patient = Patients.objects.get(Phonenumber=phonenumber)
+    records = Record.objects.filter(Patient = patient)
+    return render(request,'Hospital/checkrecord.html',{"records":records})
+
 def dlogin(request):
     if request.session.get('k3',0)==0:
         phonenumber = request.POST.get("phonenumber")
@@ -135,7 +144,8 @@ def dlogin(request):
             doctor = Doctor.objects.get(Phonenumber = request.session.get('k3',None))
             department = doctor.Department
             hospital = doctor.Hospital
-            departmentinfos = DepartmentInfo.objects.filter(Department=department).filter(Hospital=hospital)
+            date = now().date() + timedelta(days=0)
+            departmentinfos = DepartmentInfo.objects.filter(Department=department).filter(Hospital=hospital).filter(Time=date)
             return render(request,'Hospital/dsuccess.html',{"departmentinfos":departmentinfos})
         else:
             return render(request,'Hospital/false.html')
@@ -143,7 +153,8 @@ def dlogin(request):
         doctor  = Doctor.objects.get(Phonenumber = request.session.get('k3',0))
         department = doctor.Department
         hospital = doctor.Hospital
-        departmentinfos =DepartmentInfo.objects.filter(Department=department).filter(Hospital=hospital)
+        date = now().date() + timedelta(days=0)
+        departmentinfos =DepartmentInfo.objects.filter(Department=department).filter(Hospital=hospital).filter(Time=date)
         return render(request,'Hospital/dsuccess.html',{"departmentinfos":departmentinfos})
 
 def pregister(request,a,b,num):
@@ -152,6 +163,11 @@ def pregister(request,a,b,num):
     DepartmentInfo1 = DepartmentInfo.objects.get(pk=num)
     if DepartmentInfo.Restnumber==0:
         return render(request, 'Hospital/false7.html')
+    Patient = Patients.objects.get(Phonenumber=request.session.get('k1', None))
+    registers = Register.objects.filter(Patients=Patient)
+    for register in registers:
+        if DepartmentInfo1.Hospital==register.Hospital and DepartmentInfo1.Department==register.Department and DepartmentInfo1.Time==register.Time:
+            return render(request, 'Hospital/false7.html')
     DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
     DepartmentInfo1.save()
     Patient = Patients.objects.get(Phonenumber=request.session.get('k1',None))

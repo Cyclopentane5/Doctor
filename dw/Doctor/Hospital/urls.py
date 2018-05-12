@@ -68,5 +68,6 @@ urlpatterns = [
     url('^emessage/(\d+)/send/$',views.esendmessage),
     url('^advise/$',views.advise),
     url('^getadvise/$',views.getadvise),
-    url('^announcement/$',views.announcement)
+    url('^announcement/$',views.announcement),
+    url('^ownrecord/$',views.ownrecord),
 ]

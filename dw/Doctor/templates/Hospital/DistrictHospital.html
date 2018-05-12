@@ -10,6 +10,8 @@
         <li>
             <a href="{{hospital.pk}}" >{{hospital}}--{{hospital.Location}}</a>
         </li>
+        {%empty%}
+        <h3>no hospital yet</h3>
         {%endfor%}
     </ul>
 

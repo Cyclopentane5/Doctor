@@ -11,6 +11,8 @@
     <li>
         <a href="{{department.pk}}">{{department}}-----{{department.Info}}</a>
     </li>
+     {%empty%}
+        <h3>no departments</h3>
     {%endfor%}
     </ul>
 
