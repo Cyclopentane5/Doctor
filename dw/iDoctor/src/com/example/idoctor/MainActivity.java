@@ -28,7 +28,7 @@ public class MainActivity extends ActivityGroup {
 		tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("selfdoctor" , getResources().getDrawable(R.drawable.ic_launcher)).setContent(new Intent(this, List.class)));  
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("network" , null).setContent(new Intent(this, Network.class)));  
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator("reminder" , null).setContent(new Intent(this, Reminder.class)));
-		
+        tabHost.addTab(tabHost.newTabSpec("tab4").setIndicator("reference" , null).setContent(new Intent(this, References.class)));
 	}
 	
 	

@@ -25,10 +25,12 @@ public class DBHelper extends SQLiteOpenHelper{
 		String sql1 = "create table symptom(part varchar(100),symptom varchar(100))";
 		String sql2 = "create table disease(symptom varchar(100),name varchar(50),ratio varchar(30),info varchar(200),treat varchar(200))";
 		String sql3 = "create table medicine(medicine varchar(100),info varchar(100))";
-		database.execSQL(sql3);
+		String sql4 = "create table url(info varchar(100),url varchar(100))";	
 		database.execSQL(sql);
 		database.execSQL(sql1);
 		database.execSQL(sql2);
+		database.execSQL(sql3);
+		database.execSQL(sql4);
 		String[] a= new String[8];
 		a[0] = "head";
 		a[1] = "body";
@@ -78,6 +80,14 @@ public class DBHelper extends SQLiteOpenHelper{
 			contentValues.put("treat", f[i]);
 			database.insert("disease", null, contentValues);
 		}
+		String a1 = "someinfo";
+		String b1 = "https://www.baidu.com";
+		ContentValues contentValues1 = new ContentValues();
+		contentValues1.put("Info", a1);
+		contentValues1.put("url", b1);
+		database.insert("url", null, contentValues1);
+		
+		
 		
 		
 		
@@ -171,6 +181,16 @@ public class DBHelper extends SQLiteOpenHelper{
 		return cursor;
 	}
 	
+	public Cursor query6(int number) {
+		SQLiteDatabase database=getWritableDatabase();
+		Cursor cursor = null;
+		if (number==1){
+			cursor = database.query("url", null, null,null, null, null, null);
+			
+		}
+		return cursor;
+	}
+	
 	public void delete(String name){
 		if(database==null)
 		{
@@ -180,5 +200,7 @@ public class DBHelper extends SQLiteOpenHelper{
 		}
 	
 	}
+	
+	
 
 }
