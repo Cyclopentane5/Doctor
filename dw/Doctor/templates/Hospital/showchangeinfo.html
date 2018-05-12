@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <form action = "/signup/" method="post">
+    <form action = "/changeinfo/" method="post">
         {% csrf_token %}
         NewName:<input type = "text" name = "name"/>
         <hr/>
@@ -15,9 +15,9 @@
         <hr/>
         NewPhonenumber <input type = "text" name = "phonenumber"/>
         <hr/>
-        Password1 <input type = "text" name = "password1"/>
+        Password1 <input type = "password" name = "password1"/>
         <hr/>
-        Password2 <input type = "text" name = "password2"/>
+        Password2 <input type = "password" name = "password2"/>
         <hr/>
         <input type ="submit" name = "change"/>
     </form>

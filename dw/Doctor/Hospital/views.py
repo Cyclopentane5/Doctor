@@ -150,6 +150,8 @@ def pregister(request,a,b,num):
     if request.session.get('k1',0)==0:
         return render(request, 'Hospital/false5.html')
     DepartmentInfo1 = DepartmentInfo.objects.get(pk=num)
+    if DepartmentInfo.Restnumber==0:
+        return render(request, 'Hospital/false7.html')
     DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
     DepartmentInfo1.save()
     Patient = Patients.objects.get(Phonenumber=request.session.get('k1',None))
@@ -165,6 +167,8 @@ def pregister1(request,a,b,c,num):
     if request.session.get('k1',0)==0:
         return render(request, 'Hospital/false5.html')
     DepartmentInfo1 = DepartmentInfo.objects.get(pk=num)
+    if DepartmentInfo.Restnumber==0:
+        return render(request, 'Hospital/false7.html')
     DepartmentInfo1.Restnumber = DepartmentInfo1.Restnumber-1
     DepartmentInfo1.save()
     Patient = Patients.objects.get(Phonenumber=request.session.get('k1',None))
@@ -210,10 +214,14 @@ def manage(request):
 
 def addrecord(request,num):
     register = Register.objects.filter(pk=num)
+    if request.session.get('k3',0)==0:
+        return render(request,'Hospital/false.html')
     return render(request,'Hospital/addrecord.html',{"registers":register})
 
 def saddrecord(request,num):
     register = Register.objects.get(pk=num)
+    if request.session.get('k3',0)==0:
+        return render(request,'Hospital/false.html')
     doctor = Doctor.objects.get(Phonenumber=request.session.get('k3',None))
     patient = register.Patients
     np = request.POST.get("np")
@@ -225,6 +233,8 @@ def saddrecord(request,num):
     return render(request,'Hospital/success2.html')
 
 def check(request,num):
+    if request.session.get('k3',0)==0:
+        return render(request,'Hospital/false.html')
     register = Register.objects.get(pk=num)
     patient = register.Patients
     records = Record.objects.filter(Patient=patient)
@@ -264,6 +274,8 @@ def searchname(request):
     return render(request,'Hospital/FrontPage.html',{"departments":departmentlist})
 
 def changeinfo(request):
+    if request.session.get('k1', 0) == 0:
+        HttpResponseRedirect('/showchangeinfo/')
     patient = Patients.objects.get(Phonenumber = request.session.get('k1',0))
     patient.Name = request.POST.get("name")
     patient.Age = request.POST.get("age")
@@ -346,6 +358,8 @@ def showpostcomment(request,num):
     return render(request,'Hospital/postsuccess.html')
 
 def consultexpert(request):
+    if request.session.get('k1',0)==0:
+        return render(request,'Hospital/General.html')
     experts = Expert.objects.all()
     return render(request,'Hospital/consultexpert.html',{"experts":experts})
 
