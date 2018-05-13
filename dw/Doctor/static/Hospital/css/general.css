@@ -1,0 +1,87 @@
+body{
+    margin: 0px;
+    background: #eeeeee;
+}
+
+header{
+    font-size: 20px;
+    padding: 20px;
+    height: 30px;
+    background: white;
+    box-shadow: gray;
+    box-shadow: gray 2px 4px 5px ;
+}
+
+a{
+    color: black;
+    text-decoration: none ;
+    padding-right: 8px;
+}
+
+#front_bar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    display: inline;
+    float: left;
+}
+
+#brand{
+    font-style: normal;
+    font-family: "American Typewriter";
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+
+#footer{
+    background-color: white;
+    clear: both;
+    text-align: center;
+    margin: 20px;
+    padding: 10px 5px;
+    border: gray 1px solid;
+}
+
+.welcome_front {
+    padding-top: 40px;
+    height: 150px;
+    margin: 20px;
+    color: white;
+    background: #00cc99;
+    text-align: center;
+    font-size: 60px;
+    box-shadow: gray 2px 4px 5px ;
+    border-radius: 10px;
+}
+#front_menu{
+    width: 40%;
+    border: gray 1px solid;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+    background: white;
+    box-shadow: gray 2px 4px 5px ;
+    border-radius: 10px ;
+    float: right;
+}
+
+
+#front_signup{
+    width: 40%;
+    height: 190px;
+    border: gray 1px solid;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+    background: white;
+    box-shadow: gray 2px 4px 5px ;
+    border-radius: 10px;
+    float: left;
+}

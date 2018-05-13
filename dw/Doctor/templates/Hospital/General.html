@@ -1,45 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-
 <head>
     <meta charset="UTF-8">
     <title>General</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/static/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/static/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <h3>welcome{{name}}</h3>
-    <ul>
-        <li>
-            <a href="/districts">search by location</a>
-        </li>
-        <li>
-            <a href="/FrontPage">search by department</a>
-        </li>
-        <li>
-            <form action = "/SearchName/" method="post">
+    <header>
+        <!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark unique-color">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" id="brand" href="#">iDoctor</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/FrontPage">Department</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/districts">Location</a>
+            </li>
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+
+        </ul>
+        <!-- Links -->
+
+        <form class="form-inline" action = "/SearchName/" method="post">
+            <div class="md-form my-0">
                 {% csrf_token %}
-                SearchName:<input type = "text" name = "name"/>
-                <input type ="submit" name = "signup"/>
-            </form>
-        </li>
-        <li>
-            <a href="/showplogin/">patient log in</a>
-        </li>
-        <li>
-            <a href="/showsignup/">patient register</a>
-        </li>
-         <li>
-            <a href="/showdlogin/">doctor log in</a>
-        </li>
-        <li>
-            <a href="/expertlogin/">expert log in</a>
-        </li>
-        <li>
-            <a href="/advise/">Advise</a>
-        </li>
-        <li>
-            <a href="/announcement/">Announcemente</a>
-        </li>
-    </ul>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name = "name">
+                <!--<input type ="submit" name = "signup"/>-->
+            </div>
+        </form>
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+    </header>
+    <div class="welcome_front">Welcome {{name}}, This is iDoctor</div>
+    <div id="front_menu">
+        <h1>Login </h1>
+
+        <a href="/showplogin">Patient log in</a><br>
+
+        <a href="/showdlogin">Doctor log in</a><br>
+
+        <a href="/expertlogin/">Expert log in</a> <br>
+
+    </div>
+    <div id="front_signup">
+        <h1>Register</h1>
+
+         <a href="/showsignup">Patient register</a><br>
+
+    </div>
+
+     <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/static/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/static/js/mdb.min.js"></script>
+
 </body>
+<footer id="footer">
+    <div id="bottom">
+        Cyclopentane-copyright 2017 &copy;
+    </div>
+</footer>
 </html>
