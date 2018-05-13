@@ -13,7 +13,6 @@ public class Info extends Activity{
 	String x;
 	String a;
 	String b;
-	Button button1;
 	TextView textView1,textView2,textView3;
 	String name,info,treat;
 	protected void onCreate(Bundle savedInstanceState) {	
@@ -38,18 +37,6 @@ public class Info extends Activity{
 		textView1.setText(name);
 		textView2.setText(info);
 		textView3.setText(treat);
-		button1 = (Button) findViewById(R.id.button1);
-        button1.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Info.this,Disease.class);
-				intent.putExtra("name", x);
-				intent.putExtra("symptom", a);
-				Info.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
 	}
 }
