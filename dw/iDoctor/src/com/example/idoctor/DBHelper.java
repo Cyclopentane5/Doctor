@@ -60,9 +60,9 @@ public class DBHelper extends SQLiteOpenHelper{
 		c[1]="b";
 		c[2]="c";
 		String[] d = new String[3];
-		d[0]="28.0";
-		d[1]="64.0";
-		d[2]="2.0";
+		d[0]="28.0%";
+		d[1]="64.0%";
+		d[2]="2.0%";
 		String[] e = new String[3];
 		e[0]="some reason";
 		e[1]="other reason";
@@ -80,12 +80,21 @@ public class DBHelper extends SQLiteOpenHelper{
 			contentValues.put("treat", f[i]);
 			database.insert("disease", null, contentValues);
 		}
-		String a1 = "someinfo";
-		String b1 = "https://www.baidu.com";
-		ContentValues contentValues1 = new ContentValues();
-		contentValues1.put("Info", a1);
-		contentValues1.put("url", b1);
-		database.insert("url", null, contentValues1);
+		String[] a1 =new  String[20];
+		String[] b1 = new  String[20];
+			a1[0]=	"阿司匹林片穿上了肠溶外套";
+			b1[0]=	"https://www.chunyuyisheng.com/pc/article/123453/";
+			a1[1]="带孩子去采摘草莓";
+			b1[1]="https://www.chunyuyisheng.com/pc/article/123405/";
+			a1[2]="大蒜炝锅会致癌，真的假的？";
+			b1[2]="https://www.chunyuyisheng.com/pc/article/123373/";
+		for(int i=0;i<3;i++){
+			ContentValues contentValues1 = new ContentValues();
+			contentValues1.put("Info", a1[i]);
+			contentValues1.put("url", b1[i]);
+			database.insert("url", null, contentValues1);
+		}
+		
 		
 		
 		

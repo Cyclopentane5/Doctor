@@ -19,24 +19,13 @@ public class Net1 extends Activity{
     SharedPreferences sp;
 	WebView webview;
 	String url;
-	Button button;
 	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.net1);
 		Intent intent = getIntent();
 		url = intent.getStringExtra("url");
 		initview();
-		button = (Button) findViewById(R.id.button1);
-		button.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Net1.this,MainActivity.class);
-				Net1.this.startActivity(intent);
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
 	}
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {  
