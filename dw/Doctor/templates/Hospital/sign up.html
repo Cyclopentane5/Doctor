@@ -1,28 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign up</title>
-</head>
-<body>
-    <form action = "/signup/" method="post">
-        {% csrf_token %}
-        Name:<input type = "text" name = "name"/>
-        <hr/>
-        Age:<input type = "text" name = "age"/>
-        <hr/>
-        Gender <input type = "text" name = "gender"/>
-        <hr/>
-        Phonenumber <input type = "text" name = "phonenumber"/>
-        <hr/>
-        Password1 <input type = "password" name = "password1"/>
-        <hr/>
-        Password2 <input type = "password" name = "password2"/>
-        <hr/>
-         Text <input type = "text" name = "verify"/>
-        <img src="/verifycode/">
-        <hr/>
-        <input type ="submit" name = "signup"/>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block main %}
+
+
+
+<!-- Card -->
+<div class="card">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form>
+            <p class="h4 text-center py-4">Sign up</p>
+
+            <!-- inout name -->
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="signup-name" class="form-control" name="name">
+                <label for="signup-name" class="font-weight-light">Your name</label>
+            </div>
+
+            <!-- input age -->
+            <div class="md-form">
+                <i class="fa fa-envelope prefix grey-text"></i>
+                <input type="number" id="signup-age" class="form-control" name="age" min="0" max="120">
+                <label for="signup-age" class="font-weight-light">Your age</label>
+            </div>
+
+            <!-- input gender -->
+            <div class="md-form">
+                <i class="fa fa-female prefix grey-text"></i>
+                <input type="text" id="materialFormCardConfirmEx" class="form-control" name="gender">
+                <label for="materialFormCardConfirmEx" class="font-weight-light">your gender</label>
+            </div>
+
+             <!-- inout name -->
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="signup-name" class="form-control" name="name">
+                <label for="signup-name" class="font-weight-light">Your name</label>
+            </div>
+
+            <!-- Material input password -->
+            <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="materialFormCardPasswordEx" class="form-control" name="">
+                <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
+            </div>
+
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-cyan" type="submit">Register</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>
+<!-- Card -->
+
+
+<form action="/signup/" method="post">
+    {% csrf_token %}
+    Name:<input type="text" name="name"/>
+    <hr/>
+    Age:<input type="text" name="age"/>
+    <hr/>
+    Gender <input type="text" name="gender"/>
+    <hr/>
+    Phonenumber <input type="text" name="phonenumber"/>
+    <hr/>
+    Password1 <input type="password" name="password1"/>
+    <hr/>
+    Password2 <input type="password" name="password2"/>
+    <hr/>
+    Text <input type="text" name="verify"/>
+    <img src="/verifycode/">
+    <hr/>
+    <input type="submit" name="signup"/>
+</form>
+
+
+
+{% endblock %}
