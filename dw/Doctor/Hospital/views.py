@@ -17,7 +17,7 @@ def General(request):
     else:
         patient = Patients.objects.get(Phonenumber = info)
         a = patient.Name
-    return render(request,'Hospital/General.html',{"name":a})
+    return render(request,'base-landing.html',{"name":a})
 
 def DepartmenttoHospital(request):
     DepartmentL = Department.objects.all()
