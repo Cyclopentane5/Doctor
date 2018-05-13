@@ -11,7 +11,8 @@
     <div class="card-body">
 
         <!-- Material form register -->
-        <form>
+        <form action="/signup/" method="post">
+            {% csrf_token %}
             <p class="h4 text-center py-4">Sign up</p>
 
             <!-- inout name -->
@@ -23,7 +24,7 @@
 
             <!-- input age -->
             <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
+                <i class="fa fa-question prefix grey-text"></i>
                 <input type="number" id="signup-age" class="form-control" name="age" min="0" max="120">
                 <label for="signup-age" class="font-weight-light">Your age</label>
             </div>
@@ -31,22 +32,36 @@
             <!-- input gender -->
             <div class="md-form">
                 <i class="fa fa-female prefix grey-text"></i>
-                <input type="text" id="materialFormCardConfirmEx" class="form-control" name="gender">
-                <label for="materialFormCardConfirmEx" class="font-weight-light">your gender</label>
+                <input type="text" id="signup-g" class="form-control" name="gender">
+                <label for="signup-g" class="font-weight-light">your gender</label>
             </div>
 
-             <!-- inout name -->
+             <!-- inout phone -->
             <div class="md-form">
-                <i class="fa fa-user prefix grey-text"></i>
-                <input type="text" id="signup-name" class="form-control" name="name">
-                <label for="signup-name" class="font-weight-light">Your name</label>
+                <i class="fa fa-mobile prefix grey-text"></i>
+                <input type="text" id="signup-num" class="form-control" name="phonenumber">
+                <label for="signup-num" class="font-weight-light">Your phone number</label>
             </div>
 
             <!-- Material input password -->
             <div class="md-form">
                 <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="materialFormCardPasswordEx" class="form-control" name="">
-                <label for="materialFormCardPasswordEx" class="font-weight-light">Your password</label>
+                <input type="password" id="signup-p1" class="form-control" name="password1">
+                <label for="signup-p1" class="font-weight-light">Your password</label>
+            </div>
+
+            <!-- Material input password again-->
+            <div class="md-form">
+                <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+                <input type="password" id="signup-p2" class="form-control" name="password2">
+                <label for="signup-p2" class="font-weight-light">Your password again</label>
+            </div>
+
+            <!-- Material input verify -->
+            <div class="md-form">
+                <i class="fa fa-eye prefix grey-text"></i>
+                <input type="text" id="signup-v" class="form-control" name="verify">
+                <label for="signup-v" class="font-weight-light">Prove you are not a robot</label> <img src="/verifycode/">
             </div>
 
             <div class="text-center py-4 mt-3">
@@ -62,25 +77,25 @@
 <!-- Card -->
 
 
-<form action="/signup/" method="post">
-    {% csrf_token %}
-    Name:<input type="text" name="name"/>
-    <hr/>
-    Age:<input type="text" name="age"/>
-    <hr/>
-    Gender <input type="text" name="gender"/>
-    <hr/>
-    Phonenumber <input type="text" name="phonenumber"/>
-    <hr/>
-    Password1 <input type="password" name="password1"/>
-    <hr/>
-    Password2 <input type="password" name="password2"/>
-    <hr/>
-    Text <input type="text" name="verify"/>
-    <img src="/verifycode/">
-    <hr/>
-    <input type="submit" name="signup"/>
-</form>
+<!--<form action="/signup/" method="post">-->
+    <!--{% csrf_token %}-->
+    <!--Name:<input type="text" name="name"/>-->
+    <!--<hr/>-->
+    <!--Age:<input type="text" name="age"/>-->
+    <!--<hr/>-->
+    <!--Gender <input type="text" name="gender"/>-->
+    <!--<hr/>-->
+    <!--Phonenumber <input type="text" name="phonenumber"/>-->
+    <!--<hr/>-->
+    <!--Password1 <input type="password" name="password1"/>-->
+    <!--<hr/>-->
+    <!--Password2 <input type="password" name="password2"/>-->
+    <!--<hr/>-->
+    <!--Text <input type="text" name="verify"/>-->
+    <!--<img src="/verifycode/">-->
+    <!--<hr/>-->
+    <!--<input type="submit" name="signup"/>-->
+<!--</form>-->
 
 
 
