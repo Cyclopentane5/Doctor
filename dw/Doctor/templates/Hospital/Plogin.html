@@ -1,22 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Log in</title>
-</head>
-<body>
-    <form action = "/psuccess/" method="post">
-        {% csrf_token %}
-         Phonenumber <input type = "text" name = "phonenumber"/>
-        <hr/>
-        Password <input type = "password" name = "password"/>
-        <hr/>
-        Text <input type = "text" name = "verify"/>
-        <img src="/verifycode/">
-        <hr/>
-        <input type ="submit" name = "login"/>
+{% extends 'base.html' %}
 
-        <hr/>
-    </form>
-</body>
-</html>
+{% block main %}
+
+<div class="card">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form action="/psuccess/" method="post">
+            {% csrf_token %}
+            <p class="h4 text-center py-4">Sign In</p>
+
+
+             <!-- inout phone -->
+            <div class="md-form">
+                <i class="fa fa-mobile prefix grey-text"></i>
+                <input type="text" id="signup-num" class="form-control" name="phonenumber">
+                <label for="signup-num" class="font-weight-light">Your phone number</label>
+            </div>
+
+            <!-- Material input password -->
+            <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="signup-p1" class="form-control" name="password">
+                <label for="signup-p1" class="font-weight-light">Your password</label>
+            </div>
+
+
+            <!-- Material input verify -->
+            <div class="md-form">
+                <i class="fa fa-eye prefix grey-text"></i>
+                <input type="text" id="signup-v" class="form-control" name="verify">
+                <label for="signup-v" class="font-weight-light">Prove you are not a robot</label> <img src="/verifycode/">
+            </div>
+
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-cyan" type="submit" name="login">Log In</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>
+<!-- Card -->
+
+{% endblock %}
+
+
+<!--<form action="/psuccess/" method="post">-->
+    <!--{% csrf_token %}-->
+    <!--Phonenumber <input type="text" name="phonenumber"/>-->
+    <!--<hr/>-->
+    <!--Password <input type="password" name="password"/>-->
+    <!--<hr/>-->
+    <!--Text <input type="text" name="verify"/>-->
+    <!--<img src="/verifycode/">-->
+    <!--<hr/>-->
+    <!--<input type="submit" name="login"/>-->
+
+    <!--<hr/>-->
+<!--</form>-->
