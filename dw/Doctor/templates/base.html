@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %} welcome {% endblock %}</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Bootstrap core CSS -->
@@ -11,6 +11,8 @@
     <link href="/static/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="/static/css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/static/img/icon/th.jpg">
     {% block navbar-style %}
     <style type="text/css">
 
@@ -34,7 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar top-nav-collapse">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" id="brand" href="#">iDoctor</a>
+        <a class="navbar-brand" id="brand" href="/generals/">iDoctor</a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
