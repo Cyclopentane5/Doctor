@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Searchhospitals</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block page-style %}
+
+<style type="text/css">
+
+</style>
+
+{% block main %}
+
     <ul>
-        {%for district in districts%}
-        <li>
-            <a href="{{district.pk}}">{{district}}</a>
-        </li>
-        {%endfor%}
+        {% for district in districts %}
+            <li>
+                <a href="{{ district.pk }}">{{ district }}</a>
+            </li>
+        {% endfor %}
     </ul>
-</body>
-</html>
+
+{% endblock %}
+

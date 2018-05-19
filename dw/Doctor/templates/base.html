@@ -14,21 +14,23 @@
 
     <link rel="shortcut icon" href="/static/img/icon/th.jpg">
     {% block navbar-style %}
-    <style type="text/css">
+        <style type="text/css">
 
-        .navbar {
-            background: #3e4551 !important;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12) !important;
-        }
+            .navbar {
+                background: #3e4551 !important;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12) !important;
+            }
 
-        @media (min-width: 800px) and (max-width: 850px) {
-        .navbar:not(.top-nav-collapse) {
-            background: #3e4551 !important;
-        }
+            @media (min-width: 800px) and (max-width: 850px) {
+                .navbar:not(.top-nav-collapse) {
+                    background: #3e4551 !important;
+                }
 
+            }
+        </style>
+    {% endblock %}
 
-    }
-    </style>
+    {% block page-style %}
     {% endblock %}
 </head>
 <body>
@@ -93,8 +95,6 @@
 <footer>
     {% block footer %}{% endblock %}
 </footer>
-
-
 
 
 <!-- SCRIPTS -->

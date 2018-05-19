@@ -1,20 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>RegisterPlatform</title>
-</head>
-<body>
-    <h3>Hello</h3>
-    <ul>
-    {%for department in departments%}
-    <li>
-        <a href="{{department.pk}}">{{department}}-----{{department.Info}}</a>
-    </li>
-     {%empty%}
-        <h3>no departments</h3>
-    {%endfor%}
-    </ul>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block page-style %}
+    <style type="text/css">
+        #hlist {
+            padding: 30px;
+        }
+
+        .card {
+            margin: 20px;
+            padding: 20px;
+        }
+
+        #dname {
+            font-size: 20px;
+        }
+
+        a{
+            color: #0d0d0d;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="container" id="hlist">
+
+
+        {% for department in departments %}
+            <a href="{{ department.pk }}">
+                <div class="card hoverable">
+                    <div class="card-body">
+
+                        <div id="dname">
+                            {{ department }} <br>
+                        </div>
+                        <div id="dintro">
+                            {{ department.Info }}
+                        </div>
+
+
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+            <h3>no departments</h3>
+        {% endfor %}
+
+
+    </div>
+
+{% endblock %}

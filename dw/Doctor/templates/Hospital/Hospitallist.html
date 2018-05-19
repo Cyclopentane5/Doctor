@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hospital</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block main %}
+
 <ul>
     {%for hospital in hospitals%}
     <li>
@@ -13,5 +10,5 @@
     {%endfor%}
 </ul>
 
-</body>
-</html>
+{%  endblock %}
+
