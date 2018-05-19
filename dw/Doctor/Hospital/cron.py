@@ -90,7 +90,8 @@ def clock():
         info.save()
 
 def delete():
-    blogs = Blog.objects.all()
+    date = now().date() + timedelta(days=0)
+    blogs = Blog.objects.filter(Time__icontains = date)
     for blog in blogs:
         text = blog.Text
         text = text.split()
@@ -98,7 +99,7 @@ def delete():
         inputvector = DataSet2Vec(vocal_Set,input)
         x = classify(inputvector, list_pAbusive, list_pnoAbusive, pAbusive)
         if x==1:
-            blog.delete()
+            blog.Text="you blog has been clear"
 
     for blog in blogs:
         text = blog.Title
@@ -107,9 +108,9 @@ def delete():
         inputvector = DataSet2Vec(vocal_Set,input)
         x = classify(inputvector, list_pAbusive, list_pnoAbusive, pAbusive)
         if x==1:
-            blog.delete()
+            blog.Title = "you blog has been clear"
 
-    comments = Comment.objects.all()
+    comments = Comment.objects.filter(Time__icontains  =date)
     for comment in comments:
         text = comment.Text
         text = text.split()
@@ -117,4 +118,4 @@ def delete():
         inputvector = DataSet2Vec(vocal_Set, input)
         x = classify(inputvector, list_pAbusive, list_pnoAbusive, pAbusive)
         if x == 1:
-            comment.delete()
+            comment.Text ="you comment has been clear"
