@@ -2,19 +2,120 @@
 
 {% block page-style %}
 
-<style type="text/css">
+    <style type="text/css">
+        .card {
+            margin-top: 10px;
+        }
 
-</style>
+        #dlist {
+            padding: 30px;
+        }
+
+    </style>
+{% endblock %}}
 
 {% block main %}
 
-    <ul>
-        {% for district in districts %}
-            <li>
-                <a href="{{ district.pk }}">{{ district }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container" id="dlist">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            {% for district in districts %}
+                <div class="col-lg-4 col-md-12">
+
+                    <!--Card-->
+                    <div class="card hoverable">
+
+                        <!--Card image-->
+                        <div class="view">
+                            {% if district.pk == 1 %}
+
+                                <img src="/static/img/district/haidian.jpg"
+                                     class="img-fluid"
+                                     alt="photo">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+
+                            {% endif %}
+
+                            {% if district.pk == 2 %}
+
+                                <img src="/static/img/district/fengtai.jpg"
+                                     class="img-fluid"
+                                     alt="photo">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+
+                            {% endif %}
+
+                            {% if district.pk == 3 %}
+
+                                <img src="/static/img/district/chaoyang.jpg"
+                                     class="img-fluid"
+                                     alt="photo">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+
+                            {% endif %}
+
+                            {% if district.pk == 4 %}
+
+                                <img src="/static/img/district/dongcheng.jpg"
+                                     class="img-fluid"
+                                     alt="photo">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+
+                            {% endif %}
+
+                            {% if district.pk == 5 %}
+
+                                <img src="/static/img/district/xicheng.jpg"
+                                     class="img-fluid"
+                                     alt="photo">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+
+                            {% endif %}
+
+                            {% if district.pk == 6 %}
+
+                                <img src="/static/img/district/shijingshan.jpg"
+                                     class="img-fluid"
+                                     alt="photo">
+                                <a href="#">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+
+                            {% endif %}
+
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ district }}</h4>
+                            <!--Text-->
+                            <p class="card-text">click the button to find more</p>
+                            <a href="{{ district.pk }}" class="btn btn-primary">see more</a>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!-- Grid column -->
+            {% endfor %}
+        </div>
+        <!-- Grid row -->
+    </div>
 
 {% endblock %}
 
