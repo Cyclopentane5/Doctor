@@ -10,6 +10,7 @@ function reloadView(){
                 var str = "";
                 for(var i=0; i<d.length;i++){
                     str = str+d[i]+"<hr/>";
+                    str = str.replace(/,/," ")
                 }
 
                 var $p = document.getElementById("a");

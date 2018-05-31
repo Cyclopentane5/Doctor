@@ -1,16 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<ul>
+{% extends 'base.html' %}
+
+{% block page-style %}
+    <style type="text/css">
+        #hlist{
+            padding: 30px;
+        }
+        .card{
+            margin: 10px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block main %}
+\<div class="container" id="hlist">
+
     {%for department in departments%}
-    <li>
-        <a href="{{department.Department.pk}}">{{department.Department}}</a>
-    </li>
+
+
+     <a href="{{department.Department.pk}}">
+            <div class="card hoverable">
+                <div class="card-body">
+                    <!--Title-->
+                    <h4 class="card-title">{{department.Department}}</h4>
+
+                </div>
+            </div>
+        </a>
     {%endfor%}
-</ul>
-</body>
-</html>
+ </div>
+{% endblock %}

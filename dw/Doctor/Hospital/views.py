@@ -65,6 +65,9 @@ def signup(request):
     age = request.POST.get("age")
     gender = request.POST.get("gender")
     phonenumber = request.POST.get("phonenumber")
+    patient  = Patients.objects.filter(Phonenumber = phonenumber)
+    if len(patient)>0:
+        return render(request,'Hospital/sign up.html')
     password1 = request.POST.get("password1")
     password2 = request.POST.get("password2")
     verify = request.POST.get("verify")
@@ -93,6 +96,7 @@ def showdlogin(request):
         return HttpResponseRedirect('/dsuccess/')
 
 def plogin(request):
+    blogs = Blog.objects.all().order_by("-Time")
     if request.session.get('k1',0)==0:
         phonenumber = request.POST.get("phonenumber")
         if phonenumber.isdigit()==False:
@@ -109,17 +113,17 @@ def plogin(request):
             request.session['k3'] = 0
             request.session['k4'] = 0
             request.session.set_expiry(900)
-            return render(request,'Hospital/psuccess.html')
+            return render(request,'Hospital/psuccess.html',{"blogs":blogs})
         else:
             return render(request,'Hospital/false2.html')
     else:
-        return render(request,'Hospital/psuccess.html')
+        return render(request,'Hospital/psuccess.html',{"blogs":blogs})
 
 def ownrecord(request):
     phonenumber = request.session.get('k1',0)
     print(phonenumber)
     if request.session.get('k1',0)==0:
-        return render(request,'Hospital/General.html')
+        return render(request,'Hospital/base-landing.html')
     patient = Patients.objects.get(Phonenumber=phonenumber)
     records = Record.objects.filter(Patient = patient)
     return render(request,'Hospital/checkrecord.html',{"records":records})
@@ -402,11 +406,13 @@ def esuccess(request):
             request.session['k1'] = 0
             request.session['k3'] = 0
             request.session.set_expiry(900)
-            return render(request,'Hospital/esuccess.html')
+            messages = Message.objects.filter(Expert__Phonenumber=request.session.get('k4', 0)).values("Patients__Name","Patients").distinct()
+            return render(request,'Hospital/esuccess.html',{"messages":messages})
         else:
             return render(request,'Hospital/false3.html')
     else:
-        return render(request,'Hospital/esuccess.html')
+        messages = Message.objects.filter(Expert__Phonenumber=request.session.get('k4', 0)).values("Patients__Name","Patients").distinct()
+        return render(request,'Hospital/esuccess.html',{"messages":messages})
 
 def emessage(request):
     messages = Message.objects.filter(Expert__Phonenumber=request.session.get('k4',0)).values("Patients__Name","Patients").distinct()

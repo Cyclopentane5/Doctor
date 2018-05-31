@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h3>success</h3>
-    <a href="/showblog/">view it</a>
-    <a href="/generals/">return to first page</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block page-style %}
+<style type="text/css">
+
+    #main {
+        padding: 30px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container" id="main">
+    {% block warning %}Post success!{% endblock %}
+    <div class="text-center py-4 mt-3" style="font-size: 15px">
+        {% block button %}<a href="/showplogin">return to homepage</a>{% endblock %}
+    </div>
+</div>
+{% endblock %}

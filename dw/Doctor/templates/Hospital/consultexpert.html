@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <ul>
-        {%for expert in experts%}
-        <li>
-            {{expert.Name}}--{{expert.Info}}
-            <a href="{{expert.id}}">consult</a>
-        </li>
-        {%endfor%}
-    </ul>
-    <a href="/psuccess/">return to first page</a>
-</body>
-</html>
+{% extends 'Hospital/psuccess.html' %}
+
+{% block left-style %}
+
+#ename{
+font-size: 30px;
+}
+#einfo{
+
+}
+
+{% endblock %}}
+
+{% block left-side %}
+
+{%for expert in experts%}
+<a href="{{expert.id}}">
+    <div class="card" id="doctors">
+        <div class="row">
+            <div class="col" style="text-align: left" id="ename">{{expert.Name}}</div>
+            <div class="col" style="text-align: right" id="einfo">{{expert.Info}}</div>
+        </div>
+    </div>
+</a>
+{%endfor%}
+
+{% endblock %}

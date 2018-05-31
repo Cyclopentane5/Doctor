@@ -1,19 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <ul>
-        {%for register in registers%}
-        <li>
-            {{register}}--{{register.Hospital}}--{{register.Time}}--{{register.Department}}
-            <a href = "{{register.pk}}">cancel</a>
-        </li>
-        {% empty %}
-            <h3>No  register yet</h3>
-        {%endfor%}
-    </ul>
-</body>
-</html>
+{% extends 'Hospital/psuccess.html' %}
+{% block left-style %}
+
+    #warning {
+        font-size: 50px;
+        text-align: center;
+        padding-top: 300px;
+    }
+
+{% endblock %}
+
+
+{% block left-side %}
+
+{%for register in registers%}
+
+
+<div class="card px-5">
+    <div class="row">
+        Time: {{register.Time}}
+    </div>
+    <div class="row">
+        Location: {{register.Hospital}}
+    </div>
+    <div class="row">
+        <div class="col px-0" style="text-align: left">Department: {{register.Department}}</div>
+        <div class="col px-0" style="text-align: right"><a href="{{register.pk}}">cancel</a></div>
+    </div>
+
+</div>
+{% empty %}
+<p id="warning">No register yet</p>
+{%endfor%}
+
+
+{% endblock %}

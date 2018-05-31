@@ -1,21 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <ul>
+{% extends 'base.html' %}
+
+{% block page-style%}
+<style type="text/css">
+    a {
+        color: #0d0d0d;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .article {
+       text-align: left;
+        font-size: 25px;
+        font-family: "Times New Roman";
+        font-style: normal;
+        padding: 10px;
+    }
+
+    #page {
+        padding: 30px;
+    }
+
+    #left {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #right {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #default {
+        height: 200px;
+    }
+
+    #search {
+        float: right;
+    }
+
+    #author {
+        color: #0b51c5;
+        text-align: right;
+    }
+
+    #time {
+        color: #0b51c5;
+    }
+
+    #comment{
+        color: #0b51c5;
+        text-align: right;
+    }
+
+    #side-menu {
+        color: #4a5b64;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    #delete{
+        color: #0b51c5;
+        text-align: right;
+    }
+
+
+</style>
+
+{% endblock %}
+
+{% block plogin %}Main page{% endblock %}
+{% block dlogin %}Doctor log in{% endblock %}
+{% block elogin %}Expert log in {% endblock %}
+
+{% block main %}
+
+<div class="row" id="page">
+    <!--right content-->
+    <div class="col-lg-8 col-md-7 container-fluid mx-0 " id="left">
+
+        <!--navbar-->
+        <div class="card mx-0 py-0">
+            <div class="row">
+                <div class="col my-0 mt-2">
+                    <i class="fa fa-file-text-o"><a href="/postblog/"> Write Blog</a></i>
+                </div>
+                <div class="col my-0">
+                    <form class="form-inline" action="/searchblog/" method="post" id="search">
+                        <div class="md-form my-0">
+                            {%csrf_token%}
+                            <input class="form-control mr-0" type="text" style="text-align: right"
+                                   placeholder="Search Blog" aria-label="Search"
+                                   name="text"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- blogs-->
         {%for blog in blogs%}
-        <li>
-            {{blog}}
-            <a href="{{blog.pk}}/view/">show comments</a>
-            <a href="{{blog.pk}}/delete/">delete blog</a>
-        </li>
-        {%empty%}
-            <h3>no blog yet</h3>
+        <div class="card mx-0 ">
+            {%csrf_token%}
+            <div class="row">
+                <div class="col" id="title"><h1>{{blog}}</h1></div>
+                <div class="col" id="author"><p>{{blog.Author}}</p></div>
+            </div>
+
+            <p class="article">{{blog.Text}}</p>
+
+            <div class="row">
+                <div class="col" id="time"><p>{{blog.Time}}</p></div>
+                <div class="col" id="comment"><a href="{{blog.pk}}/view/">View comment</a></div>
+                <div class="col" id="delete"><a href="{{blog.pk}}/delete/">delete blog</a></div>
+            </div>
+
+        </div>
         {%endfor%}
-    </ul>
-<a href="/showblog/">return to blog page</a>
-</body>
-</html>
+
+
+    </div>
+
+    <div class="col-lg-3 col-md-4 container-fluid mx-0" id="right">
+        <div class="card mx-0" id="photo">
+            <img src="/static/img/icon/patient-icon.png" id="default">
+        </div>
+
+        <div class="card mx-0" id="side-menu">
+            <i class="fa fa-list" aria-hidden="true" style="color: green"><a href="/showblog/">&nbsp&nbspall blogs</a></i>
+            <hr>
+            <i class="fa fa-book" aria-hidden="true" style="color:green"><a href="/ownblog/">show own blogs</a></i>
+            <hr>
+            <i class="fa fa-calendar" aria-hidden="true" style="color:green"><a href="/showregister/"> show all register</a></i>
+            <hr>
+            <i class="fa fa-user-md" aria-hidden="true" style="color:green"><a href="/consultexpert/"> consult expert</a></i>
+            <hr>
+            <i class="fa fa-calendar-check-o" aria-hidden="true" style="color:green"><a href="/ownrecord/"> view my record</a></i>
+            <hr>
+            <i class="fa fa-address-book" aria-hidden="true" style="color:green"><a href="/showchangeinfo/">    modify info</a></i>
+            <hr>
+            <i class="fa fa-user-o" aria-hidden="true" style="color:green"><a href="/logout/"> log out</a></i>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

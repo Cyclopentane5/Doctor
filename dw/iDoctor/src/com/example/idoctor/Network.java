@@ -40,7 +40,7 @@ public class Network extends Activity{
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.getSettings().setSupportZoom(true);  
 		webview.getSettings().setBuiltInZoomControls(true); 
-		webview.getSettings().setUseWideViewPort(true);  
+		webview.getSettings().setUseWideViewPort(false);  
         webview.setWebViewClient(new WebViewClient(){
         	public boolean shouldOverrideUrlLoading(WebView view,String url) {
 				CookieManager cookieManager = CookieManager.getInstance();

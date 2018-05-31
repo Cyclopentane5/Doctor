@@ -1,19 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <a href="postcomment/">make comments</a>
-    <ul>
-        {%for comment in comments%}
-        <li>
-            {{comment}}
-        </li>
-        {%empty%}
-            <h3>no comments yet</h3>
-        {%endfor%}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block page-style %}
+<style type="text/css">
+    .card{
+        margin: 10px;
+        padding: 30px;
+    }
+
+    #page {
+        padding: 30px;
+    }
+
+    #content{
+        font-size: 25px;
+    }
+
+    #button{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #warning{
+        font-size: 30px;
+        text-align: center;
+        margin-top: 300px;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container" id="page">
+
+    {%for comment in comments%}
+    <div class="card" id="comment">
+        <div class="row">
+            <div class="col">{{comment.Author}}</div>
+            <div class="col" style="text-align: right">{{comment.Time}}</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col" id="content">{{comment.Text}}</div>
+        </div>
+    </div>
+    {%empty%}
+    <div class="container" id="warning">no comments yet</div>
+    {%endfor%}
+    <div class="container" style="text-align: center">
+        <a href="postcomment/"  id="button">make comments</a>
+    </div>
+
+
+</div>
+{% endblock %}

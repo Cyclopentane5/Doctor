@@ -1,3 +1,103 @@
+{% extends 'base.html' %}
+{% block title %} home page {% endblock %}
+{% block page-style%}
+<style type="text/css">
+    a {
+        color: #0d0d0d;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .article {
+        text-align: left;
+        font-size: 25px;
+        font-family: "Times New Roman";
+        font-style: normal;
+        padding: 10px;
+    }
+
+    #page {
+        padding: 30px;
+    }
+
+    #left {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #right {
+        height: 100%;
+        padding: 10px;
+    }
+
+
+    #time {
+        color: #0b51c5;
+    }
+
+
+    #side-menu {
+        color: #4a5b64;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    {% block left-style %}
+
+    {% endblock %}
+
+</style>
+
+{% endblock %}
+
+{% block plogin %}Main page{% endblock %}
+{% block dlogin %}Doctor log in{% endblock %}
+{% block elogin %}Expert log in {% endblock %}
+
+{% block main %}
+
+<div class="row" id="page">
+    <div class="col-lg-8 col-md-7 container-fluid mx-0 " id="left">
+    {% block left-side %}
+    {%for departmentinfo in departmentinfos%}
+    <div class="card mx-0 ">
+         <div class="row">
+                <div class="col" id="info"><h1>{{departmentinfo}}</h1></div>
+                <div class="col" id="time"><p>{{departmentinfo.Time}}</p></div>
+                <div class="col" id="restnumber"><p>{{departmentinfo.Restnumber}}</p></div>
+         </div>
+    </div>
+         {% empty %}
+            <h3>No register yet</h3>
+         {%endfor%}
+    {% endblock %}
+    </div>
+    <div class="col-md-2 col-md-4 container-fluid mx-0" id="right">
+        <div class="card mx-0" id="photo">
+
+                <img src="/static/img/icon/doctor_icons.jpg" style="height: 200px" id="default_male">
+
+        </div>
+
+        <div class="card mx-0" id="side-menu">
+            <i class="fa fa-backward" aria-hidden="true" style="color: green"><a href="/generals/">&nbsp&nbspreturn to first page</a></i>
+            <hr>
+            <i class="fa fa-book" aria-hidden="true" style="color: green"><a href="/manage/">&nbsp&nbspgo to manage page</a></i>
+            <hr>
+            <i class="fa fa-calendar" aria-hidden="true" style="color: green"><a href="/logout/">&nbsp&nbsplog out</a></i>
+            <hr>
+
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,3 +120,4 @@
     <a href="/logout/">logout</a>
 </body>
 </html>
+-->

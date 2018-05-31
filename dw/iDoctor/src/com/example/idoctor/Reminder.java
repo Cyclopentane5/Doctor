@@ -25,7 +25,8 @@ import android.widget.Toast;
 public class Reminder extends Activity{
 	java.util.List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
 	EditText editText;
-	int a = 1;
+	int a = 0;
+	String x;
 	Vibrator vibrator;
 	ListView listView1;
 	String[] b = new String[20];
@@ -34,13 +35,8 @@ public class Reminder extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.reminder);
 		editText = (EditText) findViewById(R.id.editText1);
-		String x = editText.getText().toString().trim();
-		try{
-			a = Integer.parseInt(x);
-		}
-		catch (Exception e) {
-			// TODO: handle exception
-		}
+		
+		
 		
 		DBHelper dbHelper4 = new DBHelper(getApplicationContext());
 		Cursor cursor4 = dbHelper4.query4(1);
@@ -59,14 +55,26 @@ public class Reminder extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				Calendar calendar = Calendar.getInstance();
-				int hour = calendar.get(Calendar.HOUR_OF_DAY);
-				int minute = calendar.get(Calendar.MINUTE);
-				startRemind(hour, minute+a);
-				vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-				long[] pattern = {a*1000*60,4000};
-				vibrator.vibrate(pattern, -1);
-				Toast.makeText(Reminder.this, "success", Toast.LENGTH_SHORT).show();
+				x = editText.getText().toString().trim();
+				try{
+					a = Integer.parseInt(x);
+				}
+				catch (Exception e) {
+					
+				}
+				if (a>0){
+					Calendar calendar = Calendar.getInstance();
+					int hour = calendar.get(Calendar.HOUR_OF_DAY);
+					int minute = calendar.get(Calendar.MINUTE);
+					startRemind(hour, minute+a);
+					vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+					long[] pattern = {a*1000*60,4000};
+					vibrator.vibrate(pattern, -1);
+					Toast.makeText(Reminder.this, "Success", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Toast.makeText(Reminder.this, "Please enter positive integer", Toast.LENGTH_SHORT).show();
+				}
 				// TODO Auto-generated method stub
 				
 			}
@@ -76,9 +84,15 @@ public class Reminder extends Activity{
 			
 			@Override
 			public void onClick(View v) {
-				stopRemind(0);
-				vibrator.cancel();
-				Toast.makeText(Reminder.this, "Cancel", Toast.LENGTH_SHORT).show();
+				try{
+					stopRemind(0);
+					vibrator.cancel();
+					Toast.makeText(Reminder.this, "Cancel", Toast.LENGTH_SHORT).show();
+				}
+				catch (Exception e) {
+					Toast.makeText(Reminder.this, "No alarm", Toast.LENGTH_SHORT).show();
+				}
+				
 				// TODO Auto-generated method stub
 				
 			}
@@ -98,7 +112,7 @@ public class Reminder extends Activity{
 		});
 		
 		listView1 = (ListView) findViewById(R.id.listView1);
-		SimpleAdapter simpleAdapter = new SimpleAdapter(this,list1,R.layout.disease1,new String[]{"name","ratio"},new int[]{R.id.textView1,R.id.textView2});
+		SimpleAdapter simpleAdapter = new SimpleAdapter(this,list1,R.layout.reminder1,new String[]{"name","ratio"},new int[]{R.id.textView1,R.id.textView2});
 		listView1.setAdapter(simpleAdapter);
 		
 		AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {

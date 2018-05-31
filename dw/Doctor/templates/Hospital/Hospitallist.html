@@ -1,14 +1,44 @@
 {% extends 'base.html' %}
 
+{% block page-style %}
+    <style type="text/css">
+        #hlist{
+            padding: 30px;
+
+        }
+        .card{
+            margin: 10px;
+            padding: 20px;
+            opacity: 0.8
+        }
+        a{
+            color: #0d0d0d;
+        }
+        #dname {
+            font-size: 20px;
+        }
+        body{
+            background-image: url('/static/img/bg/background-doctor.jpg');
+        }
+    </style>
+{% endblock %}
+
 {% block main %}
 
-<ul>
+<div class="container" id="hlist">
     {%for hospital in hospitals%}
-    <li>
-        <a href="{{hospital.Hospital.pk}}"> {{hospital.Hospital}}----{{hospital.Hospital.Location}}</a>
-    </li>
+    <a href="{{hospital.Hospital.pk}}">
+        <div class="card Hoverable">
+            <div class="card-body">
+                <!--title-->
+                <h4>{{hospital.Hospital}}</h4>
+                <!--content-->
+                <p class="card-text">{{hospital.Hospital.Location}}</p>
+            </div>
+        </div>
+    </a>
     {%endfor%}
-</ul>
+</div>
 
 {%  endblock %}
 

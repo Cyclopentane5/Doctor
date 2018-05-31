@@ -1,3 +1,27 @@
+{% extends 'base.html' %}
+{% block page-style %}
+    <style type="text/css">
+        #warning{
+            padding-top: 200px;
+            text-align: center;
+        }
+        #back{
+            text-align: center
+        }
+    </style>
+{% endblock %}
+{% block main %}
+    <div class="container" id="warning">
+            <h1>Add success!</h1>
+
+    </div>
+    <div class="container" id="back">
+        <a href="/generals/">return to front page</a>
+        <a href="/manage/">return to manage page</a>
+    </div>
+
+{% endblock %}
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +34,4 @@
     <a href="/manage/">return to manage page</a>
 </body>
 </html>
+-->

@@ -86,7 +86,6 @@ def clock():
     infos = DepartmentInfo.objects.all()
     for info in infos:
         info.Time = date
-        info.Restnumber=info.Restnumber+50
         info.save()
 
 def delete():
@@ -100,6 +99,7 @@ def delete():
         x = classify(inputvector, list_pAbusive, list_pnoAbusive, pAbusive)
         if x==1:
             blog.Text="you blog has been clear"
+        blog.save()
 
     for blog in blogs:
         text = blog.Title
@@ -109,6 +109,7 @@ def delete():
         x = classify(inputvector, list_pAbusive, list_pnoAbusive, pAbusive)
         if x==1:
             blog.Title = "you blog has been clear"
+        blog.save()
 
     comments = Comment.objects.filter(Time__icontains  =date)
     for comment in comments:
@@ -119,3 +120,4 @@ def delete():
         x = classify(inputvector, list_pAbusive, list_pnoAbusive, pAbusive)
         if x == 1:
             comment.Text ="you comment has been clear"
+        comment.save()

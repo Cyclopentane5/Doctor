@@ -18,12 +18,24 @@ import android.widget.SimpleAdapter;
 
 public class List extends Activity{
 	java.util.List<Map<String, Object>> list1 = new ArrayList<Map<String,Object>>();
-	String[] a = new String[8];
+	String[] a = new String[9];
 	ListView listview1;
+	Object[] img = new Object[9];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list);
+		
+		img[0] = R.drawable.head;
+		img[1] = R.drawable.body;
+		img[2] = R.drawable.throat;
+		img[3] = R.drawable.chest;
+		img[4] = R.drawable.stomach;
+		img[5] = R.drawable.pelvis;
+		img[6] = R.drawable.limb;
+		img[7] = R.drawable.back;
+		img[8] = R.drawable.skin;
+		
 		
 		DBHelper dbHelper = new DBHelper(getApplicationContext());
 		int i=0;
@@ -31,14 +43,14 @@ public class List extends Activity{
 		while(cursor.moveToNext())
 		{
 			String name = cursor.getString(cursor.getColumnIndex("name"));
-			addList(name);
+			addList(name,i);
 			a[i]=name;
 			i++;
 		}
 		dbHelper.close();
 		
 		listview1 = (ListView) findViewById(R.id.listView1);
-		SimpleAdapter simpleAdapter = new SimpleAdapter(this,list1,R.layout.list1,new String[]{"name"},new int[]{R.id.textView1});
+		SimpleAdapter simpleAdapter = new SimpleAdapter(this,list1,R.layout.list1,new String[]{"img"},new int[]{R.id.img});
 		listview1.setAdapter(simpleAdapter);
 		
 		AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener() {
@@ -59,9 +71,9 @@ public class List extends Activity{
 		listview1.setOnItemClickListener(itemClickListener);
 	}
 	
-	private void addList(Object a){
+	private void addList(Object a,int i){
 		Map<String,Object> aMap = new HashMap<String, Object>();
-		aMap.put("name", a);
+		aMap.put("img", img[i]);
 		list1.add(aMap);
 	}
 }

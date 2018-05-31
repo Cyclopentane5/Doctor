@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/timg7"
     tools:context="com.example.cooking.MainActivity" >
 
 
@@ -13,29 +14,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="0dp"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="530dp" >
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                <LinearLayout
+                    android:layout_width="297dp"
+                    android:layout_height="296dp"
+                    android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+        				android:textSize="70px"
+                        android:padding="10dp"
+                        android:text="Large Text"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                    
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#000000"
+        				android:textSize="70px"
+                        android:text="Info:"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                    
+                     <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+             			android:padding="10dp"
+                        android:text="Large Text"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                     
+                     <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#000000"
+        				android:textSize="70px"
+                        android:text="Treatment:"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                     
+                      <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Large Text"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                </LinearLayout>
+            </ScrollView>
             
         </LinearLayout>
     

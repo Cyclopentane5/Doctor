@@ -22,21 +22,43 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int back=0x7f020000;
+        public static final int body=0x7f020001;
+        public static final int chest=0x7f020002;
+        public static final int head=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int limb=0x7f020005;
+        public static final int pelvis=0x7f020006;
+        public static final int skin=0x7f020007;
+        public static final int source=0x7f020008;
+        public static final int stomach=0x7f020009;
+        public static final int throat=0x7f02000a;
+        public static final int timg=0x7f02000b;
+        public static final int timg1=0x7f02000c;
+        public static final int timg2=0x7f02000d;
+        public static final int timg3=0x7f02000e;
+        public static final int timg4=0x7f02000f;
+        public static final int timg5=0x7f020010;
+        public static final int timg6=0x7f020011;
+        public static final int timg7=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000b;
+        public static final int action_settings=0x7f08000f;
         public static final int button1=0x7f080004;
-        public static final int button2=0x7f080007;
-        public static final int button3=0x7f08000a;
+        public static final int button2=0x7f08000d;
+        public static final int button3=0x7f08000e;
         public static final int editText1=0x7f080001;
         public static final int editText2=0x7f080003;
-        public static final int listView1=0x7f080005;
+        public static final int img=0x7f08000b;
+        public static final int linearLayout1=0x7f080007;
+        public static final int listView1=0x7f080008;
         public static final int scrollView1=0x7f080009;
         public static final int textView1=0x7f080000;
         public static final int textView2=0x7f080002;
-        public static final int textView3=0x7f080006;
-        public static final int webView1=0x7f080008;
+        public static final int textView3=0x7f080005;
+        public static final int textView4=0x7f080006;
+        public static final int textView5=0x7f08000a;
+        public static final int webView1=0x7f08000c;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -51,8 +73,9 @@ public final class R {
         public static final int network=0x7f030009;
         public static final int references=0x7f03000a;
         public static final int reminder=0x7f03000b;
-        public static final int symptom=0x7f03000c;
-        public static final int symptom1=0x7f03000d;
+        public static final int reminder1=0x7f03000c;
+        public static final int symptom=0x7f03000d;
+        public static final int symptom1=0x7f03000e;
     }
     public static final class menu {
         public static final int main=0x7f070000;

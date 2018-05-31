@@ -1,3 +1,97 @@
+{% extends 'base.html' %}
+{% block title %} home page {% endblock %}
+{% block page-style%}
+<style type="text/css">
+    a {
+        color: #0d0d0d;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 20px;
+    }
+
+
+
+    #page {
+        padding: 30px;
+    }
+
+    #left {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #right {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #warning{
+        padding: 30px;
+    }
+
+    #side-menu {
+        color: #4a5b64;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    {% block left-style %}
+
+    {% endblock %}
+
+</style>
+
+{% endblock %}
+
+{% block plogin %}Main page{% endblock %}
+{% block dlogin %}Doctor log in{% endblock %}
+{% block elogin %}Expert log in {% endblock %}
+
+{% block main %}
+
+<div class="row" id="page">
+     <div class="col-lg-8 col-md-7 container-fluid mx-0 " id="left">
+    {% block left-side %}
+
+    {%for message in messages%}
+
+
+    <div class="row">
+
+        <div class="col px-0" style="text-align: right"><a href="/emessage/{{message.Patients}}">view message</a></div>
+        <div class="col px-0" style="text-align: right"><a href="/emessage/{{message.Patients}}/view/">view record</a></div>
+    </div>
+
+    </div>
+    {% empty %}
+    <p id="warning">No register or messages yet</p>
+    {%endfor%}
+     {% endblock %}
+     </div>
+    <div class="col-md-3 col-md-4 container-fluid mx-0" id="right">
+        <div class="card mx-0" id="photo">
+
+                <img src="/static/img/icon/expert.jpg" style="height: 200px" id="default_male">
+
+        </div>
+
+        <div class="card mx-0" id="side-menu">
+
+            <i class="fa fa-book" aria-hidden="true" style="color: green"><a href="/logout/">&nbsp&nbsp log out</a></i>
+            <hr>
+            <i class="fa fa-calendar" aria-hidden="true" style="color: green"><a href="/generals/">&nbsp&nbsp return to first page</a></i>
+            <hr>
+
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,3 +107,4 @@
     <a href="/generals/">return to first page</a>
 </body>
 </html>
+-->

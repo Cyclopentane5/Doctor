@@ -1,3 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+sign in
+{% endblock %}
+
+{% block main %}
+<div class="card">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form action="success/" method="post">
+            {% csrf_token %}
+            <p class="h4 text-center py-4">Add record</p>
+
+
+             <!-- inout phone -->
+            <div class="md-form">
+                <i class="fa fa-medkit prefix grey-text"></i>
+                <input type="text" id="signup-num" class="form-control" name="np">
+                <label for="signup-num" class="font-weight-light">Medicine</label>
+            </div>
+
+            <!-- Material input password -->
+            <div class="md-form">
+                <i class="fa fa-stethoscope prefix grey-text"></i>
+                <input type="text" id="signup-p1" class="form-control" name="name">
+                <label for="signup-p1" class="font-weight-light">Disease</label>
+            </div>
+
+
+            <!-- Material input verify -->
+            <div class="md-form">
+                <i class="fa fa-heartbeat prefix grey-text"></i>
+                <input type="text" id="signup-p2" class="form-control" name="info">
+                <label for="signup-p1" class="font-weight-light">Info</label>
+            </div>
+
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-cyan" type="submit" name="login">Add</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>
+<!-- Card -->
+
+{% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
+{% block nav-style %}navbar-dark{% endblock %}
+
 {% block landing %}
 
 <!--Intro Section-->
 <section class="view intro-2"
-         style="background-image: url('/static/img/bg/doctor.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+         style="background-image: url('{% block img %}/static/img/bg/doctor.jpg {% endblock %}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
     <div class="mask">
+        {% block main-landing%}
         <div class="container h-100 d-flex justify-content-center align-items-center">
             <div class="row flex-center pt-5 mt-3">
                 <div class="col-md-12 col-lg-6 text-center text-md-left margins">
@@ -50,6 +53,7 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
     </div>
 </section>
 
@@ -92,6 +96,8 @@
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12) !important;
         }
     }
+
+
 </style>
 {% endblock %}
 

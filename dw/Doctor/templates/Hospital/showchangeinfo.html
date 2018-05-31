@@ -1,25 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form action = "/changeinfo/" method="post">
-        {% csrf_token %}
-        NewName:<input type = "text" name = "name"/>
-        <hr/>
-        NewAge:<input type = "text" name = "age"/>
-        <hr/>
-        NewGender <input type = "text" name = "gender"/>
-        <hr/>
-        NewPhonenumber <input type = "text" name = "phonenumber"/>
-        <hr/>
-        Password1 <input type = "password" name = "password1"/>
-        <hr/>
-        Password2 <input type = "password" name = "password2"/>
-        <hr/>
-        <input type ="submit" name = "change"/>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %} change info {% endblock %}
+
+{% block main %}
+
+
+
+<!-- Card -->
+<div class="card">
+
+    <!-- Card body -->
+    <div class="card-body">
+
+        <!-- Material form register -->
+        <form action="/changeinfo/" method="post">
+            {% csrf_token %}
+            <p class="h4 text-center py-4">Change info</p>
+
+            <!-- inout name -->
+            <div class="md-form">
+                <i class="fa fa-user prefix grey-text"></i>
+                <input type="text" id="signup-name" class="form-control" name="name">
+                <label for="signup-name" class="font-weight-light">New name</label>
+            </div>
+
+            <!-- input age -->
+            <div class="md-form">
+                <i class="fa fa-question prefix grey-text"></i>
+                <input type="number" id="signup-age" class="form-control" name="age" min="0" max="120">
+                <label for="signup-age" class="font-weight-light">New age</label>
+            </div>
+
+            <!-- input gender -->
+            <div class="md-form">
+                <i class="fa fa-female prefix grey-text"></i>
+                <input type="text" id="signup-g" class="form-control" name="gender">
+                <label for="signup-g" class="font-weight-light">New gender</label>
+            </div>
+
+             <!-- inout phone -->
+            <div class="md-form">
+                <i class="fa fa-mobile prefix grey-text"></i>
+                <input type="text" id="signup-num" class="form-control" name="phonenumber">
+                <label for="signup-num" class="font-weight-light">New phone number</label>
+            </div>
+
+            <!-- Material input password -->
+            <div class="md-form">
+                <i class="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="signup-p1" class="form-control" name="password1">
+                <label for="signup-p1" class="font-weight-light">New password</label>
+            </div>
+
+            <!-- Material input password again-->
+            <div class="md-form">
+                <i class="fa fa-exclamation-triangle prefix grey-text"></i>
+                <input type="password" id="signup-p2" class="form-control" name="password2">
+                <label for="signup-p2" class="font-weight-light">New password again</label>
+            </div>
+
+            <!-- Material input verify -->
+            <div class="md-form">
+                <i class="fa fa-eye prefix grey-text"></i>
+                <input type="text" id="signup-v" class="form-control" name="verify">
+                <label for="signup-v" class="font-weight-light">Prove you are not a robot</label> <img src="/verifycode/">
+            </div>
+
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-cyan" type="submit">Change</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+
+    </div>
+    <!-- Card body -->
+
+</div>
+<!-- Card -->
+{% endblock %}
+
+<!--<form action = "/changeinfo/" method="post">-->

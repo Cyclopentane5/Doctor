@@ -1,18 +1,150 @@
 {% extends 'base.html' %}
+{% block title %} home page {% endblock %}
+{% block page-style%}
+<style type="text/css">
+    a {
+        color: #0d0d0d;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .article {
+        text-align: left;
+        font-size: 25px;
+        font-family: "Times New Roman";
+        font-style: normal;
+        padding: 10px;
+    }
+
+    #page {
+        padding: 30px;
+    }
+
+    #left {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #right {
+        height: 100%;
+        padding: 10px;
+    }
+
+    #default {
+        height: 200px;
+    }
+
+    #search {
+        float: right;
+    }
+
+    #author {
+        color: #0b51c5;
+        text-align: right;
+    }
+
+    #time {
+        color: #0b51c5;
+    }
+
+    #comment{
+        color: #0b51c5;
+        text-align: right;
+    }
+
+    #side-menu {
+        color: #4a5b64;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    {% block left-style %}
+
+    {% endblock %}
+
+</style>
+
+{% endblock %}
+
+
+
+{% block plogin %}Main page{% endblock %}
+{% block dlogin %}Doctor log in{% endblock %}
+{% block elogin %}Expert log in {% endblock %}
 
 {% block main %}
-<h3> success</h3>
-    <a href="/generals/">return to first page</a>
-    <hr/>
-    <a href="/showregister/">show all register</a>
-    <hr/>
-    <a href="/showchangeinfo/">change personal information</a>
-    <hr/>
-    <a href="/showblog/">blog</a>
-    <hr/>
-    <a href="/consultexpert/">consult expert</a>
-    <hr/>
-    <a href="/ownrecord/">view my record</a>
-    <hr/>
-    <a href="/logout/">log out</a>
+
+
+<div class="row" id="page">
+    <!--right content-->
+    <div class="col-lg-8 col-md-7 container-fluid mx-0 " id="left">
+    {% block left-side %}
+        <!--navbar-->
+        <div class="card mx-0 py-0">
+            <div class="row">
+                <div class="col my-0 mt-2">
+                    <i class="fa fa-file-text-o"><a href="/postblog/"> Write Blog</a></i>
+                </div>
+                <div class="col my-0">
+                    <form class="form-inline" action="/searchblog/" method="post" id="search">
+                        <div class="md-form my-0">
+                            {%csrf_token%}
+                            <input class="form-control mr-0" type="text" style="text-align: right"
+                                   placeholder="Search Blog" aria-label="Search"
+                                   name="text"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- blogs-->
+        {%for blog in blogs%}
+        <div class="card mx-0 ">
+            {%csrf_token%}
+            <div class="row">
+                <div class="col" id="title"><h1>{{blog}}</h1></div>
+                <div class="col" id="author"><p>{{blog.Author}}</p></div>
+            </div>
+
+            <p class="article">{{blog.Text}}</p>
+
+            <div class="row">
+                <div class="col" id="time"><p>{{blog.Time}}</p></div>
+                <div class="col" id="comment"><a href="/showblog/{{blog.pk}}">View comment</a></div>
+            </div>
+
+        </div>
+        {%endfor%}
+    {% endblock %}
+    </div>
+    <div class="col-md-3 col-md-4 container-fluid mx-0" id="right">
+        <div class="card mx-0" id="photo">
+
+                <img src="/static/img/icon/patient-icon.png" style="height: 200px" id="default_male">
+
+        </div>
+
+        <div class="card mx-0" id="side-menu">
+            <i class="fa fa-list" aria-hidden="true" style="color: green"><a href="/psuccess/">&nbsp&nbspall blogs</a></i>
+            <hr>
+            <i class="fa fa-book" aria-hidden="true" style="color: green"><a href="/ownblog/">&nbsp&nbspmy blogs</a></i>
+            <hr>
+            <i class="fa fa-calendar" aria-hidden="true" style="color: green"><a href="/showregister/">&nbsp&nbspshow all register</a></i>
+            <hr>
+            <i class="fa fa-user-md" aria-hidden="true" style="color: green"><a href="/consultexpert/">&nbsp&nbspconsult expert</a></i>
+            <hr>
+            <i class="fa fa-calendar-check-o" aria-hidden="true" style="color: green"><a href="/ownrecord/">&nbsp&nbspmy record</a></i>
+            <hr>
+            <i class="fa fa-address-book" aria-hidden="true" style="color: green"><a href="/showchangeinfo/">&nbsp&nbspmodify info</a></i>
+            <hr>
+            <i class="fa fa-user-o" aria-hidden="true" style="color: green"><a href="/logout/">&nbsp&nbsplog out</a></i>
+
+        </div>
+
+    </div>
+</div>
 {% endblock %}

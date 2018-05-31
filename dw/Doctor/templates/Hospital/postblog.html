@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <form action="/showpostblog/" method="post">
-       {%csrf_token%}
-        Title:<input type = "text" name = "title"/>
-        <hr/>
-        Text:<input type = "text" name = "text"/>
-        <hr/>
-        <input type ="submit" name = "public"/>
+{% extends 'base.html' %}
+
+{% block page-style %}
+<style type="text/css">
+
+    #main {
+        padding: 30px;
+    }
+
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="container" id="main">
+    <form role="form" action="/showpostblog/" method="post">
+        {%csrf_token%}
+        <div class = "form-group">
+            <label for="title" style="font-size: 20px">Title</label>
+            <textarea type="text" class="form-control" name="title" id="title" placeholder="title" rows="1"></textarea>
+            <hr>
+            <label for="text" style="font-size: 20px">Article:</label>
+            <textarea type="text" class="form-control" name="text" rows="25" id="text" placeholder="please write here"></textarea>
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-cyan" type="submit" name="public">Post</button>
+            </div>
+        </div>
+
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

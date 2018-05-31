@@ -27,6 +27,11 @@
                 }
 
             }
+
+            {% block main-style %}
+
+            {% endblock %}
+
         </style>
     {% endblock %}
 
@@ -35,7 +40,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar top-nav-collapse">
+    <nav class="navbar navbar-expand-lg {% block nav-style %}navbar-dark{% endblock %} fixed-top scrolling-navbar top-nav-collapse">
 
         <!-- Navbar brand -->
         <a class="navbar-brand" id="brand" href="/generals/">iDoctor</a>
@@ -61,11 +66,11 @@
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                       aria-haspopup="true" aria-expanded="false">Login</a>
                     <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="/showplogin">{% block plogin %}Patient log in {% endblock %}</a>
+                        <a class="dropdown-item" href="/showdlogin">{% block dlogin %}Doctor log in{% endblock %}</a>
+                        <a class="dropdown-item" href="/expertlogin/">{% block elogin %}Expert log in{% endblock %}</a>
                     </div>
                 </li>
 
@@ -89,7 +94,7 @@
 </header>
 
 <main>
-    <div class="container mt-5">{% block main %}{% endblock %}</div>
+    <div class="container mt-5" id="main">{% block main %}{% endblock %}</div>
 
 </main>
 <footer>
@@ -99,7 +104,7 @@
 
 <!-- SCRIPTS -->
 <!-- JQuery -->
-<script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src = "/static/js/jquery-3.3.1.js/"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="/static/js/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->

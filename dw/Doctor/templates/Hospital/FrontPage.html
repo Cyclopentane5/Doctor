@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
-{% block page-style %}
+
+{%block page-style%}
     <style type="text/css">
+
         #hlist {
             padding: 30px;
         }
 
         .card {
-            margin: 20px;
+            margin: 30px;
             padding: 20px;
+            opacity: 0.8
         }
 
         #dname {
@@ -18,37 +21,38 @@
         a{
             color: #0d0d0d;
         }
+        body{
+            background-image: url('/static/img/bg/background-doctor.jpg');
+        }
 
-    </style>
-
+</style>
 {% endblock %}
 
-{% block main %}
+{%block main%}
 
-    <div class="container" id="hlist">
+<div class="container"id="hlist">
 
+    {% for department in departments %}
+    <a href="{{ department.pk }}">
+        <div class="card hoverable">
+            <div class="card-body">
 
-        {% for department in departments %}
-            <a href="{{ department.pk }}">
-                <div class="card hoverable">
-                    <div class="card-body">
-
-                        <div id="dname">
-                            {{ department }} <br>
-                        </div>
-                        <div id="dintro">
-                            {{ department.Info }}
-                        </div>
-
-
-                    </div>
+                <div id="dname">
+                    {{ department }} <br>
                 </div>
-            </a>
-            {% empty %}
-            <h3>no departments</h3>
-        {% endfor %}
+                <div id="dintro">
+                    {{ department.Info }}
+                </div>
 
 
-    </div>
+            </div>
+        </div>
+    </a>
+    {% empty %}
+    <h3>no departments</h3>
+    {% endfor %}
+
+
+</div>
 
 {% endblock %}

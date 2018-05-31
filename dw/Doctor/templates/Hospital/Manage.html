@@ -1,3 +1,39 @@
+{% extends 'Hospital/dsuccess.html' %}
+{% block left-style %}
+
+    #warning {
+        font-size: 50px;
+        text-align: center;
+        padding-top: 300px;
+    }
+
+{% endblock %}
+
+
+{% block left-side %}
+
+{%for register in registers%}
+<div class="card px-5">
+    <div class="row">
+        Registerinfo: {{register}}
+    </div>
+    <div class="row">
+        Time: {{register.Time}}
+    </div>
+    <div class="row">
+        Patient: {{register.Patients}}
+    </div>
+    <div class="row">
+
+        <div class="col px-0" style="text-align: right"><a href="{{register.pk}}">addrecord</a></div>
+        <div class="col px-0" style="text-align: right"><a href="{{register.pk}}/check/">check record</a></div>
+    </div>
+
+</div>
+{% empty %}
+<p id="warning">No register yet</p>
+{%endfor%}
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,3 +56,6 @@
 <a href="/dsuccess/">return to last page</a>
 </body>
 </html>
+
+-->
+{% endblock %}

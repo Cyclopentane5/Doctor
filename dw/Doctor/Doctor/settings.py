@@ -126,6 +126,6 @@ STATICFILES_DIRS=[
 
 CRONJOBS = [
     ('* * */1 * *', 'Hospital.cron.clock'),
-    ('*/15 * * * *', 'Hospital.cron.delete'),
+    ('*/5 * * * *', 'Hospital.cron.delete'),
 ]
 

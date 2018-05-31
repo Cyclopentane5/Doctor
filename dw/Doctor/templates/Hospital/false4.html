@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h3>false</h3>
-    <a href="/generals/">return to first page</a>
-    <a href="/advise/">try again</a>
-</body>
-</html>
+{% extends 'Hospital/postsuccess.html' %}
+
+{% block warning %} false {% endblock %}
+
+{% block button %}
+<a href="/advise/">try again</a>
+{% endblock %}
